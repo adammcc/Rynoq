@@ -40,7 +40,11 @@ gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
+  gem 'factory_girl'
 end
+
+gem 'pry'
+gem 'yahoofinance'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
