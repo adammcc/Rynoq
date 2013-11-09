@@ -1,28 +1,15 @@
-== README
+= Rynoq
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rynoq let's you visualize and animate historical stock volatility.
 
-Things you may want to cover:
+==Technology
 
-* Ruby version
+* Rails 4
 
-* System dependencies
+* MongoDB with Mongoid
 
-* Configuration
+* Backbone.js, d3.js
 
-* Database creation
+* Yahoo Fianance API
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Rspec, Cucumber, Factory Girl
