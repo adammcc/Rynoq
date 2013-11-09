@@ -1,4 +1,3 @@
-require 'yahoofinance'
 
 Stock.delete_all
 

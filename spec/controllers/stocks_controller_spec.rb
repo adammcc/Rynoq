@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe StocksController do
 	before(:all) do
-		Stock.create([{price:{},information:{}},{price:{},information:{}}]) 
+		Stock.create(ticker:'goog', company_name: 'Google', description: 'Awesome company.') 
 	end
 
 	describe "GET #index" do
