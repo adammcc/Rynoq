@@ -1,31 +1,27 @@
-
-
-
 require 'yahoofinance'
 
 Stock.delete_all
 
-data = YahooFinance::get_historical_quotes_days( 'GOOG', 30 )
-i = 0
-price = {}
-data.each do |day| 
-	price[day[0]] = {open: day[1], high:day[2], low:day[3], close:day[4], volumn:day[5], adj_close:day[6]}
-end
+data = YahooFinance::get_historical_quotes_days( 'GOOG', 10 )
 
 information = {company_name: 'Google inc.', ticker: 'GOOG', description: 'Google Inc. (Google) is a global technology company. The Company’s business is primarily focused around key areas, such as search, advertising, operating systems and platforms, enterprise and hardware products. The Company generates revenue primarily by delivering online advertising. The Company provides its products and services in more than 100 languages and in more than 50 countries, regions, and territories. The Company’s Motorola business consists of two segments: Mobile segment and Home segment. The Mobile segment is focused on mobile wireless devices and related products and services. The Home segment is focused on technologies and devices that provide video entertainment services to consumers by enabling subscribers to access a variety of interactive digital television services. Effective September 16, 2013, Google Inc acquired Bump Technologies Inc. Effective October 22, 2013, Google Inc acquired FlexyCore, a developer of software.'}
 
+goog = Stock.create(information)
 
-
-
-
-
-
-Stock.create(price: price, information: information ) 
-
+data.reverse.each do |day|
+	goog.price.create(
+	  date: day[0]
+	  open: day[1]
+	  high: day[2]
+	  low: day[3]
+	  close: day[4]
+	  volume: day[5]
+	  adjusted: day[6]
+end
 
 #************************Standard****************************************
 #************************************************************************
-# YahooFinance::get_standard_quotes( quote_symbols )
+# $YahooFinance::get_standard_quotes( quote_symbols )
 
 # => {"GOOD"=>
 #   #<YahooFinance::StandardQuote:0x007f856b2a13e8
@@ -70,7 +66,7 @@ Stock.create(price: price, information: information )
 #    @volume=41427>}
 
 
-#************************Historical****************************************
+#************************Historical**************************************
 #************************************************************************
 # Getting the historical quote data as a raw array.
 # The elements of the array are:
@@ -82,7 +78,7 @@ Stock.create(price: price, information: information )
 #   [5] - Volume
 #   [6] - Adjusted Close
 
-# YahooFinance::get_historical_quotes_days( 'YHOO', 30 )
+# $YahooFinance::get_historical_quotes_days( 'YHOO', 30 )
 
 # => [["2013-11-07", "32.99", "33.05", "32.06", "32.11", "16850700", "32.11"],
 #  ["2013-11-06", "33.07", "33.30", "32.71", "32.88", "10826400", "32.88"],
@@ -107,10 +103,10 @@ Stock.create(price: price, information: information )
 #  ["2013-10-10", "33.49", "33.91", "33.33", "33.87", "23448100", "33.87"],
 #  ["2013-10-09", "33.07", "33.33", "31.79", "33.01", "33509700", "33.01"]]
 
-#************************Extended********************************************
+#************************Extended****************************************
 #************************************************************************
-# quote_type = YahooFinance::ExtendedQuote
-# pry(main)> YahooFinance::get_quotes( quote_type, "GOOG" )
+# $quote_type = YahooFinance::ExtendedQuote
+# $YahooFinance::get_quotes( quote_type, "GOOG" )
 
 # => {"GOOG"=>
 #   #<YahooFinance::ExtendedQuote:0x007f856b5d9100
