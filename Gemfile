@@ -45,6 +45,9 @@ end
 
 gem 'pry'
 gem 'yahoofinance'
+gem 'nokogiri'
+gem 'ruby-prof'
+gem 'colorize'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
