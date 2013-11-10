@@ -8,16 +8,16 @@ information = {company_name: 'Google inc.', ticker: 'GOOG', description: 'Google
 
 goog = Stock.create(information)
 
-data.reverse.each do |day|
-	goog.price.create(
-	  date: day[0]
-	  open: day[1]
-	  high: day[2]
-	  low: day[3]
-	  close: day[4]
-	  volume: day[5]
-	  adjusted: day[6]
-end
+# data.reverse.each do |day|
+# 	goog.price.create(
+# 	  date: day[0],
+# 	  open: day[1],
+# 	  high: day[2],
+# 	  low: day[3],
+# 	  close: day[4],
+# 	  volume: day[5],
+# 	  adjusted: day[6])
+# end
 
 #************************Standard****************************************
 #************************************************************************
