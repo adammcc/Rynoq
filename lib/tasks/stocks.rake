@@ -45,9 +45,20 @@ namespace :stocks do
 		end
   end
 
-  desc "Add one stock with quotes since 2000-01-01. Stock ticker needs to be passed in as an argument."
+  desc "Add one stock with quotes since 2000-01-01. Stock ticker needs to be passed in as an argument, or pass in an environment variable, TICKERS, with multiple arguments.(TICKERS=QUOTE1,QUOTE1,QUOTE3)"
   task :add, [:ticker] => :environment do |t, args|
   	ticker = args[:ticker]
+  	if ticker.class == String
+  		add_stock(ticker)
+		elsif ENV['TICKERS'].split(',').class == Array
+			tickers = ENV['TICKERS'].split(',')
+			tickers.each do |ticker|
+				add_stock(ticker)
+			end
+	  end
+	end
+
+	def add_stock(ticker)
 		# check if stock exists in db
 		if Stock.where(ticker: ticker).to_a.count == 0
 			# get data from Yahoo Finance
@@ -81,8 +92,7 @@ namespace :stocks do
 		else
 			puts "#{ticker} already exists and was not added.".yellow
 		end
-  end
-
+	end
 end
 
 
