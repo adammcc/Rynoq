@@ -2,6 +2,26 @@
 <script src="/assets/d3_animation.js" type="text/javascript"></script>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 
+
+<div id="selectbox">
+	<%= select(:Stock, :ticker, Stock.order_by("ticker ASC").all.collect {|s| [ s.ticker, s.id, { 'ticker' => s.ticker}]}, prompt: 'GOOG') %>
+</div>
+
+<!-- selectbox search field -->
+<script>
+	(function($){
+	    $(function(){
+	        $('select').selectToAutocomplete();
+	        $('form').submit(function(){
+	            alert( $(this).serialize() );
+	            return false;
+	        });
+	    });
+	})(jQuery);
+</script>
+<!-- selectbox search field end-->
+
+
 <div class="company_info">
 	<ul>
 		<li><span>Company Name:</span> <%= @stock.company_name %></li>
@@ -11,3 +31,4 @@
 		<li><span>Description:</span> <%= @stock.description %></li>
 	</ul>
 </div>
+
