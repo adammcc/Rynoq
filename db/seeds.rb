@@ -16,6 +16,7 @@ sp500_tickers.take(5).each_with_index do |ticker,index|
 		data = YahooFinance::get_historical_quotes(ticker, Date.parse( '2008-01-01' ), Date.today() )
 		quotes = data.reverse
 
+
 		information = {}
 		information[:ticker] = ticker
 		information[:company_name] = sp500_names[index]
@@ -28,6 +29,18 @@ sp500_tickers.take(5).each_with_index do |ticker,index|
 	end
 end
 ###################### End Seed Version2.0#####################
+
+# data.reverse.each do |day|
+# 	goog.price.create(
+# 	  date: day[0],
+# 	  open: day[1],
+# 	  high: day[2],
+# 	  low: day[3],
+# 	  close: day[4],
+# 	  volume: day[5],
+# 	  adjusted: day[6])
+# end
+
 
 
 #************************Yahoo Fianance API******************************
