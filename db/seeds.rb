@@ -8,6 +8,12 @@ information = {company_name: 'Google inc.', ticker: 'GOOG', description: 'Google
 
 goog = Stock.create(information)
 
+YahooFinance::get_historical_quotes_days( 'GOOG', 50 ) do |row|
+  puts "#{row.join(',')}"
+end
+
+YahooFinance::get_historical_quotes_days( 'GOOG', 50 )
+
 # data.reverse.each do |day|
 # 	goog.price.create(
 # 	  date: day[0],
