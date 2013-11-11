@@ -5,7 +5,7 @@ class StocksController < ApplicationController
 
 	def show
 		@stocks = Stock.all.to_a.collect do |stock|
-			"#{stock.company_name} (#{stock.ticker})"
+			["#{stock.company_name} (#{stock.ticker})", stock.ticker]
 		end
 
 		@id = params[:id]

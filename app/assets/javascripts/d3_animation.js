@@ -28,82 +28,86 @@ var h = 800;
 
 
 // var information = {company_name: 'Google inc.', ticker: 'GOOG', description: 'Google Inc. (Google) is a global technology company. The Company’s business is primarily focused around key areas, such as search, advertising, operating systems and platforms, enterprise and hardware products. The Company generates revenue primarily by delivering online advertising. The Company provides its products and services in more than 100 languages and in more than 50 countries, regions, and territories. The Company’s Motorola business consists of two segments: Mobile segment and Home segment. The Mobile segment is focused on mobile wireless devices and related products and services. The Home segment is focused on technologies and devices that provide video entertainment services to consumers by enabling subscribers to access a variety of interactive digital television services. Effective September 16, 2013, Google Inc acquired Bump Technologies Inc. Effective October 22, 2013, Google Inc acquired FlexyCore, a developer of software.'}
+$(function() {
+  $("#stock_ticker").on('change', function() {
 
-$(document).on('change', 'select', function() {
+    // d3.selectAll("svg").remove();
 
-  // d3.selectAll("svg").remove();
+    var ticker_input = $('#stock_ticker option:selected').val();
 
-  // var dataset= [];
-  // var count = 0;
-  
-  var ticker_input = $('#stock_ticker option:selected').val();
+    console.log(ticker_input)
 
-  console.log(ticker_input)
+    getData();
 
-  function getData() {
-    $.ajax({
-      type: "GET",
-      dataType: "json",
-      url: "/stocks/" + ticker_input,
-      success: function(data){
-        dataset = data.quotes
-        makeCircle(dataset)
-      }
-    });
-  }
+    function getData() {
+      $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "/stocks/" + ticker_input,
+        success: function(data){
+          console.log(data)
+          dataset = data
+          makeCircle(dataset)
+        }
+      });
+    }
 
-  // getData();
 
-  function makeCircle(dataset) {
-    d3.selectAll("svg").remove();
+    function makeCircle(dataset) {
+      d3.selectAll("svg").remove();
 
-    var rScale = d3.scale.linear()
-                  .domain([0,1050])
-                  .range([60,275]);
+      var rScale = d3.scale.linear()
+                    .domain([0,1050])
+                    .range([60,275]);
 
-    var svg = d3.select("body")
-			          .append("svg")
-			          .attr("width", w)
-			          .attr("height", h);
-    		
-    var circle = svg.selectAll("circle")
-    						    .data([1])
-    						    .enter()
-    						    .append("circle");
-    		
-    circle
-    	.attr("cx", -100)
-    	.attr("cy", h/2 - 75)
-    	.attr("r", rScale(200))
-    	.attr("fill", "#2ecc71")
-    	.attr('fill-opacity', .7);
+      var svg = d3.select("body")
+  			          .append("svg")
+  			          .attr("width", w)
+  			          .attr("height", h);
+      		
+      var circle = svg.selectAll("circle")
+      						    .data([0])
+      						    .enter()
+      						    .append("circle");
+      		
+      circle
+      	.attr("cx", -100)
+      	.attr("cy", h/2 - 200)
+      	.attr("r", rScale(200))
+      	.attr("fill", "#2ecc71")
+      	.attr("fill-opacity", .7);
 
-    var text = svg.selectAll("text")
-      .data(dataset)
-      .enter()
-      .append("text");
+      // var text = svg.selectAll("text")
+      //   .data(dataset)
+      //   .enter()
+      //   .append("text");
+        
+      // text
+      //   .text(function(d) {
+      //      return d[6];
+      //     })
+      //   .attr("x", 300)
+      //   .attr("y", h/2 - 75)
+      //   .attr("font-family", "sans-serif")
+      //   .attr("font-size", "20px")
+      //   .attr("fill", "white" );
+       circle
+        .transition().attr("cx", 300).duration(2000).ease("elastic").each("end", myCallback);;
       
-    text
-      .text(function(d) {
-         return d[6];
-        })
-      .attr("x", 300)
-      .attr("y", h/2 - 75)
-      .attr("font-family", "sans-serif")
-      .attr("font-size", "20px")
-      .attr("fill", "white" );
 
-     dataset.forEach(function(d, i) {
-      circle.transition().duration(1000).delay(i * 1000)
-        .attr("r", rScale(d[6]))
-        // .attr("fill", "#"+((1<<24)*Math.random()|0).toString(16))
-        // .attr('fill-opacity', Math.random())
-        .attr("cx", 300)
-        .ease("elastic");
+       dataset.forEach(function(d, i) {
+        // console.log(d[6])
+        circle.transition().duration(10).delay(i * 10)
+          .attr("r", rScale(d[6]))
+          // .attr("cx", 300)
+          // .attr("fill", "#"+((1<<24)*Math.random()|0).toString(16))
+          // .attr('fill-opacity', Math.random())
+          .ease("elastic");
 
-      text.transition().duration(1000).delay(i * 1000)
-        .text(d[0])
-        .attr("x", 255)
-    });
-  }
+        // text.transition().duration(2000).delay(i * 2000)
+        //   .text(d[0])
+        //   .attr("x", 255)
+      });
+    }
+  });
 });
