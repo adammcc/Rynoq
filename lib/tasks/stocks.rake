@@ -1,7 +1,7 @@
 namespace :stocks do
   desc "Get the most recent data for all quotes"
   task :update => :environment do
-  	# soon
+  	# coming soon
   end
 
   desc "populate database with a number(argument) of actual S&P500 stocks witch quotes since 2000-01-01"
