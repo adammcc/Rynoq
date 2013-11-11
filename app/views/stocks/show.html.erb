@@ -4,8 +4,20 @@
 
 
 <div id="selectbox">
-	<%= select(:Stock, :ticker, Stock.order_by("ticker ASC").all.collect {|s| [ s.ticker, s.id, { 'ticker' => s.ticker}]}, prompt: 'GOOG') %>
+	<%= select(:stock, :ticker, Stock.order_by("ticker ASC").all.collect {|s| [ s.ticker, s.id, { 'data-quotes' => s.quotes }]}, prompt: 'ABBV') %>
 </div>
+
+
+<div class="company_info">
+	<ul>
+		<li><span>Company Name:</span> <%= @stock.company_name %></li>
+
+		<li><span>Ticker:</span> <%= @stock.ticker %></li>
+		
+		<li><span>Description:</span> <%= @stock.description %></li>
+	</ul>
+</div>
+
 
 <!-- selectbox search field -->
 <script>
@@ -20,15 +32,3 @@
 	})(jQuery);
 </script>
 <!-- selectbox search field end-->
-
-
-<div class="company_info">
-	<ul>
-		<li><span>Company Name:</span> <%= @stock.company_name %></li>
-
-		<li><span>Ticker:</span> <%= @stock.ticker %></li>
-		
-		<li><span>Description:</span> <%= @stock.description %></li>
-	</ul>
-</div>
-

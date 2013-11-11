@@ -17,7 +17,7 @@ sp500_tickers.take(5).each_with_index do |ticker,index|
 		quotes = data.reverse
 
 
-		information = {}
+		information = {}n
 		information[:ticker] = ticker
 		information[:company_name] = sp500_names[index]
 		information[:description] =  description

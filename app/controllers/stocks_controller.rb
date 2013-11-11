@@ -1,10 +1,16 @@
 class StocksController < ApplicationController
 	def index
-		
+		@stocks = Stock.all.to_a
 	end
 
 	def show
-		@stock = Stock.find(params[:id])
+		id = params[:id]
+		@stock = Stock.find(id)
+
+		respond_to do |format|
+      format.html
+      format.json {render :json => @stock}
+		end
 	end 
 
 end
