@@ -2,7 +2,7 @@
 var w = 600;
 var h = 800;
 
-// var dataset = [
+// var dataset = [[
 //    ["2013-11-08", "1008.75", "1018.50", "1008.50", "1016.03", "1290800", "1016.03"],
 //    ["2013-11-07", "1022.61", "1023.93", "1007.64", "1007.95", "1679600", "1007.95"],
 //    ["2013-11-06", "1025.60", "1027.00", "1015.37", "1022.75", "912900", "1022.75"],
@@ -24,17 +24,21 @@ var h = 800;
 //    ["2013-10-15", "875.76", "885.63", "874.00", "882.01", "1591900", "882.01"],
 //    ["2013-10-14", "866.66", "876.25", "865.39", "876.11", "1243600", "876.11"],
 //    ["2013-10-11", "866.03", "873.48", "865.30", "871.99", "1408900", "871.99"]
-//  ]
+//  ]]
 
 
 // var information = {company_name: 'Google inc.', ticker: 'GOOG', description: 'Google Inc. (Google) is a global technology company. The Company’s business is primarily focused around key areas, such as search, advertising, operating systems and platforms, enterprise and hardware products. The Company generates revenue primarily by delivering online advertising. The Company provides its products and services in more than 100 languages and in more than 50 countries, regions, and territories. The Company’s Motorola business consists of two segments: Mobile segment and Home segment. The Mobile segment is focused on mobile wireless devices and related products and services. The Home segment is focused on technologies and devices that provide video entertainment services to consumers by enabling subscribers to access a variety of interactive digital television services. Effective September 16, 2013, Google Inc acquired Bump Technologies Inc. Effective October 22, 2013, Google Inc acquired FlexyCore, a developer of software.'}
+
 $(document).on('change', 'select', function() {
 
-  d3.select("svg").remove();
+  // d3.selectAll("svg").remove();
 
-  var dataset= [];
+  // var dataset= [];
+  // var count = 0;
   
-  var ticker_input = $('#stock_ticker option:selected').text();
+  var ticker_input = $('#stock_ticker option:selected').val();
+
+  console.log(ticker_input)
 
   function getData() {
     $.ajax({
@@ -43,62 +47,63 @@ $(document).on('change', 'select', function() {
       url: "/stocks/" + ticker_input,
       success: function(data){
         dataset = data.quotes
-        console.log(dataset)
         makeCircle(dataset)
       }
     });
   }
 
-  dataset = getData();
+  // getData();
 
   function makeCircle(dataset) {
+    d3.selectAll("svg").remove();
+
     var rScale = d3.scale.linear()
-                    .domain([0,1050])
-                    .range([0,275]);
+                  .domain([0,1050])
+                  .range([60,275]);
 
     var svg = d3.select("body")
-    			          .append("svg")
-    			          .attr("width", w)
-    			          .attr("height", h);
+			          .append("svg")
+			          .attr("width", w)
+			          .attr("height", h);
     		
     var circle = svg.selectAll("circle")
-    						    .data(dataset)
+    						    .data([1])
     						    .enter()
     						    .append("circle");
     		
     circle
     	.attr("cx", -100)
     	.attr("cy", h/2 - 75)
-    	.attr("r", rScale(30))
+    	.attr("r", rScale(200))
     	.attr("fill", "#2ecc71")
-    	.attr('fill-opacity', 0.1)
+    	.attr('fill-opacity', .7);
 
     var text = svg.selectAll("text")
       .data(dataset)
       .enter()
-      .append("text")
+      .append("text");
       
     text
-     	.text(function(d) {
+      .text(function(d) {
          return d[6];
-     		})
-    	.attr("x", -100)
+        })
+      .attr("x", 300)
       .attr("y", h/2 - 75)
       .attr("font-family", "sans-serif")
       .attr("font-size", "20px")
       .attr("fill", "white" );
 
-
-    dataset.forEach(function(d, i) {
+     dataset.forEach(function(d, i) {
       circle.transition().duration(1000).delay(i * 1000)
         .attr("r", rScale(d[6]))
         // .attr("fill", "#"+((1<<24)*Math.random()|0).toString(16))
         // .attr('fill-opacity', Math.random())
         .attr("cx", 300)
         .ease("elastic");
+
       text.transition().duration(1000).delay(i * 1000)
-  	    .text(d[0])
-  	    .attr("x", 255)
-  	});
+        .text(d[0])
+        .attr("x", 255)
+    });
   }
 });

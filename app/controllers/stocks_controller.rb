@@ -4,12 +4,18 @@ class StocksController < ApplicationController
 	end
 
 	def show
+		@stocks = Stock.all.to_a.collect do |stock|
+			"#{stock.company_name} (#{stock.ticker})"
+		end
+
 		id = params[:id]
 		@stock = Stock.find(id)
 
+		stock = @stock.quotes
+
 		respond_to do |format|
       format.html
-      format.json {render :json => @stock}
+      format.json {render :json => stock}
 		end
 	end 
 

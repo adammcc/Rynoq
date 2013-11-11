@@ -4,7 +4,7 @@
 
 
 <div id="selectbox">
-	<%= select(:stock, :ticker, Stock.order_by("ticker ASC").all.collect {|s| [ s.ticker, s.id, { 'data-quotes' => s.quotes }]}, prompt: 'ABBV') %>
+	<%= select(:stock, :ticker, @stocks, prompt: 'ABBV') %>
 </div>
 
 
@@ -20,15 +20,15 @@
 
 
 <!-- selectbox search field -->
-<script>
-	(function($){
-	    $(function(){
-	        $('select').selectToAutocomplete();
-	        $('form').submit(function(){
-	            alert( $(this).serialize() );
-	            return false;
-	        });
-	    });
-	})(jQuery);
-</script>
+<!-- // script>
+// 	(function($){
+// 	    $(function(){
+// 	        $('select').selectToAutocomplete();
+// 	        $('form').submit(function(){
+// 	            alert( $(this).serialize() );
+// 	            return false;
+// 	        });
+// 	    });
+// 	})(jQuery);
+// /script -->
 <!-- selectbox search field end-->
