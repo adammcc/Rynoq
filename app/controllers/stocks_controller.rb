@@ -8,8 +8,8 @@ class StocksController < ApplicationController
 			"#{stock.company_name} (#{stock.ticker})"
 		end
 
-		id = params[:id]
-		@stock = Stock.find(id)
+		@id = params[:id]
+		@stock = Stock.find(@id)
 
 		stock = @stock.quotes
 
