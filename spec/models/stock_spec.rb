@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Stock do
 	before(:all) do
-		@stock = Stock.create!(ticker:'goog', company_name:'Google')
+		@stock = Stock.create(ticker:'goog', company_name:'Google')
 	end
 
 	it "is a class" do
@@ -26,10 +26,9 @@ describe Stock do
 	end
 
 	xit "check for uniqueness of ticker" do
-		expect {stock = Stock.create!(ticker:'goog', company_name:'Yahoo')}.to raise_error
-		puts "*********"
+		stock = Stock.create(ticker:'goog', company_name:'Yahoo')
 		p stock.errors
-		stock.errors.messages[:ticker].first.should == "This ticker already exists."
+		stock.should have(1).error_on(:ticker)
 	end
 
 	xit "check for uniqueness of company name" do
