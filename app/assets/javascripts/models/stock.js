@@ -1,7 +1,7 @@
 var app = app || {};
 
 app.Stock = Backbone.Model.extend({
-	urlRoot: '/stock',
+	urlRoot: '/stocks',
 	defaults: {
 		ticker: 'Not specified.',
 		company_name: 'Not specified.',
@@ -10,7 +10,7 @@ app.Stock = Backbone.Model.extend({
 	},
 
 	initialize: function(){
-		console.log("A stock was retrieved.")
+		this.fetch();
 	}
 
 });

@@ -8,15 +8,14 @@ class StocksController < ApplicationController
 			"#{stock.company_name} (#{stock.ticker})"
 		end
 
-		@id = params[:id]
-		@stock = Stock.find(@id)
-
-		stock = @stock.quotes
+		@stock = Stock.find(params[:id])
 
 		respond_to do |format|
       format.html
-      format.json {render :json => stock}
+      format.json {render :json => @stock}
 		end
 	end 
 
 end
+
+
