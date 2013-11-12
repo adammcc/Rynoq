@@ -36,9 +36,9 @@ $(function() {
     function makeCircle(dataset) {
       d3.selectAll("svg").remove();
 
-      var rScale = d3.scale.linear()
+      var rScale = d3.scale.pow()
                     .domain([0,1050])
-                    .range([60,275]);
+                    .range([100, 275]);
 
       var svg = d3.select("body")
   			          .append("svg")
@@ -51,7 +51,7 @@ $(function() {
       						    .append("circle");
       		
       circle
-      	.attr("cx", -100)
+      	.attr("cx", 300)
       	.attr("cy", h/2 - 250)
       	.attr("r", rScale(dataset[0][6]))
       	.attr("fill", "#2ecc71")
@@ -82,12 +82,16 @@ $(function() {
         .attr("font-size", "20px")
         .attr("fill", "white" );
 
+    
+
       circle
-        .transition().attr("cx", 300).duration(4000).ease("elastic").each("end", trans);
+        .transition().attr("cx", 300).duration(1000).ease("elastic").each("end", trans);
 
       ellipse
-        .transition().attr("cx", 300).duration(4000).ease("elastic")
-      
+        .transition().attr("cx", 300).duration(1000).ease("elastic")
+
+    
+
       function trans() {
        dataset.forEach(function(d, i) {
         // console.log(d[6])
@@ -107,62 +111,68 @@ $(function() {
           // .attr("x", 255)
         });
       }
+  
+      var box = circle.node().getBBox();
 
-
-    var box = circle.node().getBBox();
-    // console.log(box)
-
-    var overlay = svg.append("rect")
+      var overlay = svg.append("rect")
         .attr("class", "overlay")
         .attr("x", 300)
         .attr("y", h/2 - 250)
         .attr("width", box.width)
         .attr("height", box.height)
-        .attr("fill", "#2ecc71")
+        .attr('fill-opacity', 0)
+        // .attr("fill", "#2ecc71")
         .on("mouseover", enableInteraction);
-
-    console.log(overlay)
-
-    // After the transition finishes, you can mouseover to change the year.
-  function enableInteraction() {
-    var newScale = d3.scale.linear()
-        .domain([60, 275])
-        .range([box.x + 10, box.x + box.width - 10])
-        .clamp(true);
-
-    // Cancel the current transition, if any.
-    svg.transition().duration(0);
-
-    overlay
-        .on("mouseover", mouseover)
-        .on("mouseout", mouseout)
-        .on("mousemove", mousemove)
-        .on("touchmove", mousemove);
-
-    console.log('overlay')
+  
     
-    function mouseover() {
-      console.log('yo')
-      circle.classed("active", true);
+      console.log(dataset[0][6]);
+      console.log(dataset[dataset.length - 1][6]);
+      console.log(box.x);
+      console.log(box.x + box.width);
+    
+
+      // mouseover to change animation.
+      function enableInteraction() {
+        
+        var boxScale = d3.scale.linear()
+            .domain([300, box.x + box.width])
+            .range([0, dataset.length - 1])
+            .clamp(true);
+
+        // Cancel the current transitions.
+        circle.transition().duration(0);
+        text.transition().duration(0);
+        ellipse.transition().duration(0);
+
+        overlay
+            .on("mouseover", mouseover)
+            .on("mouseout", mouseout)
+            .on("mousemove", mousemove)
+            .on("touchmove", mousemove);
+
+        
+        function mouseover() {
+          console.log('yo');
+          circle.classed("active", true);
+        }
+
+        function mouseout() {
+          console.log("yo i'm out");
+          circle.classed("active", false);
+        }
+
+        function mousemove() {
+          // console.log('yo move');
+          // console.log(Math.floor(boxScale(d3.mouse(this)[0])));
+          displayChange(Math.floor(boxScale(d3.mouse(this)[0])));
+        }
+      
+    // Updates the display to show the specified date and size.
+        function displayChange(index) {
+          text.text(dataset[index][0]);
+          circle.attr("r", rScale(dataset[index][6]));
+          ellipse.attr("rx", rScale(dataset[index][6]));
+        }
+      }
     }
 
-    function mouseout() {
-      circle.classed("active", false);
-    }
-
-     function mousemove() {
-      displayDate(newScale.invert(d3.mouse(this)[0]));
-    }
-  }
-
-  // Updates the display to show the specified year.
-  function displayDate(date) {
-    dot.data(interpolateData(date), key).call(position).sort(order);
-    label.text(Math.round(date));
-  }
-
-
-
-
-}
-// });
