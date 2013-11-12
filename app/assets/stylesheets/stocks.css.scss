@@ -24,3 +24,68 @@ span {
 	list-style-type: none;
 	margin-top: 13px;
 }
+
+
+/*select box*/
+	#selectbox {
+	  padding: 10px;
+	  background-color:#003540;
+	  width: 200px;
+	  position: absolute;
+	  top: 0;
+	  right: 0;
+	}
+
+	.ui-autocomplete {
+	  font-size: 14px;
+	  padding: 0;
+	  list-style: none;
+	  background-color: #fff;
+	  width: 200px;
+	  border: 1px solid #B0BECA;
+	  max-height: 350px;
+	  overflow-y: scroll;
+	}
+
+	.ui-autocomplete-input {
+	   background: url(magnifying_glass.png) no-repeat 6px 4px #fcfcfc;
+	   border: none;
+	   color: #444;
+	   /*font-family: $marketing-font;*/
+	   font-size: 13px;
+	   font-weight: bold;
+	   margin-bottom: 3px;
+	   width: 152px;
+	   padding: 6px 15px 6px 35px;
+	   text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+	   -webkit-transition: all 0.7s ease 0s;
+	   -moz-transition: all 0.7s ease 0s;
+	   -o-transition: all 0.7s ease 0s;
+	   transition: all 0.7s ease 0s;
+	}
+
+    .ui-autocomplete .ui-menu-item a {
+	  border-top: 1px solid #B0BECA;
+	  display: block;
+	  padding: 4px 6px;
+	  color: #353D44;
+	  cursor: pointer;
+	}
+    
+	.ui-autocomplete .ui-menu-item:first-child a {
+ 	  border-top: none;
+	}
+
+	.ui-autocomplete .ui-menu-item a.ui-state-hover {
+      background-color: #D5E5F4;
+      color: #161A1C;
+	}
+
+	#country-info {
+		text-align: center;
+		font-size: 22px;
+		font-weight: bold;
+	}
+	/*select box end*/
+
+
