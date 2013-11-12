@@ -3,13 +3,38 @@
 <head>
   <title>Rynoq</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
+<!-- home template -->
+<script id="home-view-template" type="text/x-handlebars-template">
+	<p>Home View Template</p>
+	<div id="selectbox">
+		<%= select(:stock, :ticker, @select_options_list, prompt: 'Select a company')%>
+	</div>
+</script>
+<!-- show template -->
+<script id="stock-view-template" type="text/x-handlebars-template">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 
-<%= yield %>
+	<div id="selectbox">
+		<%= select(:stock, :ticker, @select_options_list, prompt: 'Select a company')%>
+	</div>
 
+	<div class="company_info">
+		<ul>
+			<li><span>Company Name:</span> {{company_name}}</li>
+
+			<li><span>Ticker:</span> {{ticker}}</li>
+			<li><span>Description:</span> {{description}}</li>
+		</ul>
+	</div>
+</script>
+
+<div id="main">
+</div>
+
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 </body>
 </html>

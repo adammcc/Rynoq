@@ -10,11 +10,7 @@ app.Stock = Backbone.Model.extend({
 	},
 
 	initialize: function(){
-		this.fetch();
+		console.log("Stock view initialized");
 	}
-
 });
 
-$(function(){
-	console.log('hi');
-});
