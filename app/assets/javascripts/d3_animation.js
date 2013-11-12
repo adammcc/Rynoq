@@ -5,17 +5,20 @@ var ticker_input = 'ABBV';
 
 $(function() {
 
-  $("#start_button").on('click', function() {
-    ticker_input = $('#stock_ticker option:selected').val();
-    getData()
-  });
+    $("#start_button").on('click', function() {
+      ticker_input = $('#stock_ticker option:selected').val();
+      app.router.navigate('/stocks/' + ticker_input, {trigger: true })
+    });
 
 
-  $("#stock_ticker").on('change', function() {
-    console.log('yo')
-    ticker_input = $('#stock_ticker option:selected').val();
-    window.location = '/stocks/' + ticker_input
-  });
+    $("#stock_ticker").on('change', function() {
+      console.log('yo')
+      ticker_input = $('#stock_ticker option:selected').val();
+      app.router.navigate('/stocks/' + ticker_input, {trigger: true })
+    });
+
+
+
 });
 
 
