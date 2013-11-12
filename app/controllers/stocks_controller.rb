@@ -10,6 +10,7 @@ class StocksController < ApplicationController
 
 	def show
 		@select_options_list = Stock.all.pluck(:company_name,:ticker)
+		
 
 		@stock = Stock.find(params[:id])
 
