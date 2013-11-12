@@ -18,7 +18,6 @@ app.Router = Backbone.Router.extend({
 
 	show: function(id){
 		console.log("Stock View routing")
-
 		var stock = new app.Stock({id:id});
 		stock.fetch({
 			error: function(model, response) {
@@ -26,6 +25,7 @@ app.Router = Backbone.Router.extend({
 			},
 			success: function(model, response) {
 				console.log('Stock fetched successfully!');
+				makeCircle(model.attributes.quotes)
 				var stock_view = new app.StockView({model: model})
 				stock_view.render();
 			}
