@@ -1,12 +1,15 @@
 class StocksController < ApplicationController
 	def index
-		@stocks = Stock.all.to_a
+		@select_options_list = Stock.all.pluck(:company_name,:ticker)
+
+		respond_to do |format|
+			format.html
+			format.json {render :json => @select_options_list}
+		end
 	end
 
 	def show
-		@stocks = Stock.all.to_a.collect do |stock|
-			"#{stock.company_name} (#{stock.ticker})"
-		end
+		@select_options_list = Stock.all.pluck(:company_name,:ticker)
 
 		@stock = Stock.find(params[:id])
 
