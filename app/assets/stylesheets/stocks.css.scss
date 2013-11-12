@@ -13,7 +13,7 @@ span {
 .company_info {
 	width: 500px;
 	/*border: 1px dashed;*/
-	margin: 160px 0px 0px 600px;
+	margin: 140px 0px 0px 550px;
 	position: absolute;
 	float: left;
 	border-left: 1px solid;
@@ -23,6 +23,18 @@ span {
 .company_info ul li {
 	list-style-type: none;
 	margin-top: 13px;
+}
+
+#start_button {
+ 		width: 80px;
+    background: none;
+    cursor: pointer;
+    font-family: 'voltaeftu-regular',Times New Roman;
+    font-size: 16px;
+    border: 1px solid gray;
+    color: #2ecc71;
+    margin-left: 0px;
+    padding: 0px;
 }
 
 

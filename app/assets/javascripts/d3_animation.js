@@ -4,16 +4,20 @@ var h = 800;
 var ticker_input = 'ABBV';
 
 $(function() {
-  getData()
+
+  $("#start_button").on('click', function() {
+    ticker_input = $('#stock_ticker option:selected').val();
+    getData()
+  });
+
 
   $("#stock_ticker").on('change', function() {
     console.log('yo')
     ticker_input = $('#stock_ticker option:selected').val();
     window.location = '/stocks/' + ticker_input
-    // var win = window.open("stocks/" + location,'_self',false)
-  
   });
 });
+
 
     // console.log(ticker_input)
     function getData() {
@@ -66,7 +70,7 @@ $(function() {
         .attr("fill-opacity", .2);
 
       var text = svg.selectAll("text")
-        .data("Start")
+        .data([0])
         .enter()
         .append("text");
         
@@ -103,5 +107,62 @@ $(function() {
           // .attr("x", 255)
         });
       }
+
+
+    var box = circle.node().getBBox();
+    // console.log(box)
+
+    var overlay = svg.append("rect")
+        .attr("class", "overlay")
+        .attr("x", 300)
+        .attr("y", h/2 - 250)
+        .attr("width", box.width)
+        .attr("height", box.height)
+        .attr("fill", "#2ecc71")
+        .on("mouseover", enableInteraction);
+
+    console.log(overlay)
+
+    // After the transition finishes, you can mouseover to change the year.
+  function enableInteraction() {
+    var newScale = d3.scale.linear()
+        .domain([60, 275])
+        .range([box.x + 10, box.x + box.width - 10])
+        .clamp(true);
+
+    // Cancel the current transition, if any.
+    svg.transition().duration(0);
+
+    overlay
+        .on("mouseover", mouseover)
+        .on("mouseout", mouseout)
+        .on("mousemove", mousemove)
+        .on("touchmove", mousemove);
+
+    console.log('overlay')
+    
+    function mouseover() {
+      console.log('yo')
+      circle.classed("active", true);
     }
+
+    function mouseout() {
+      circle.classed("active", false);
+    }
+
+     function mousemove() {
+      displayDate(newScale.invert(d3.mouse(this)[0]));
+    }
+  }
+
+  // Updates the display to show the specified year.
+  function displayDate(date) {
+    dot.data(interpolateData(date), key).call(position).sort(order);
+    label.text(Math.round(date));
+  }
+
+
+
+
+}
 // });
