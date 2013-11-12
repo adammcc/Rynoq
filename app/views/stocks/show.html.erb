@@ -2,9 +2,7 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 
 
-<div id="selectbox">
-	<%= select(:stock, :ticker, @stocks, prompt: 'ABBV') %>
-</div>
+<%= render "search_box" %>
 
 
 <div class="company_info">
@@ -14,20 +12,12 @@
 		<li><span>Ticker:</span> <%= @stock.ticker %></li>
 		
 		<li><span>Description:</span> <%= @stock.description %></li>
+
+		<li><button id="start_button" type="button">Start</button></li>
 	</ul>
+
+
 </div>
 
 
-<!-- selectbox search field -->
-<!-- // script>
-// 	(function($){
-// 	    $(function(){
-// 	        $('select').selectToAutocomplete();
-// 	        $('form').submit(function(){
-// 	            alert( $(this).serialize() );
-// 	            return false;
-// 	        });
-// 	    });
-// 	})(jQuery);
-// /script -->
-<!-- selectbox search field end-->
+

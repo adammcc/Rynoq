@@ -1,5 +1,7 @@
 Rynoq::Application.routes.draw do
 
+  root 'stocks#index'
+
   get '/stocks' => 'stocks#index'
 
   get '/stocks/:id' => 'stocks#show'
