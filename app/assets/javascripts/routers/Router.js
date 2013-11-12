@@ -26,8 +26,10 @@ app.Router = Backbone.Router.extend({
 			},
 			success: function(model, response) {
 				console.log('Stock fetched successfully!');
+				makeCircle(model.attributes.quotes)
 				var stock_view = new app.StockView({model: model})
 				stock_view.render();
+
 			}
 		});
 
