@@ -8,7 +8,7 @@ app.Router = Backbone.Router.extend({
 
 		'stocks/:id': 'show',
 
-		'stocks/battle': 'battle'
+		'stock/battle': 'battle'
 	},
 
 	index: function(){
@@ -29,5 +29,13 @@ app.Router = Backbone.Router.extend({
 				stock_view.render();
 			}
 		});
+	},
+
+	battle: function() {
+		console.log("Battle View routing")
+		var battle_view = new app.BattleView()
+		battle_view.render();
 	}
+
+
 });
