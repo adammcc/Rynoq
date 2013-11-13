@@ -1,47 +1,15 @@
 
-var w = 600;
+var w = 1200;
 var h = 800;
 var ticker_input = 'ABBV';
 
-$(function() {
-
-    $("#start_button").on('click', function() {
-      ticker_input = $('#stock_ticker option:selected').val();
-      app.router.navigate('/stocks/' + ticker_input, {trigger: true })
-    });
-
-
-    $("#stock_ticker").on('change', function() {
-      console.log('yo')
-      ticker_input = $('#stock_ticker option:selected').val();
-      app.router.navigate('/stocks/' + ticker_input, {trigger: true })
-    });
-
-
-
-});
-
-
-    // console.log(ticker_input)
-    function getData() {
-      $.ajax({
-        type: "GET",
-        dataType: "json",
-        url: "/stocks/" + ticker_input,
-        success: function(data){
-          console.log(data)
-          dataset = data
-          makeCircle(dataset)
-        }
-      });
-    }
 
     function makeCircle(dataset) {
       d3.selectAll("svg").remove();
 
       var rScale = d3.scale.pow()
                     .domain([0,1050])
-                    .range([100, 275]);
+                    .range([60, 275]);
 
       var svg = d3.select("body")
   			          .append("svg")
@@ -54,10 +22,10 @@ $(function() {
       						    .append("circle");
       		
       circle
-      	.attr("cx", 300)
+      	.attr("cx", -100)
       	.attr("cy", h/2 - 250)
       	.attr("r", rScale(dataset[0][6]))
-      	.attr("fill", "#2ecc71")
+      	.attr("fill", "#2980b9")
       	.attr("fill-opacity", .7);
 
       var ellipse = svg.selectAll("ellipse")
@@ -85,47 +53,51 @@ $(function() {
         .attr("font-size", "20px")
         .attr("fill", "white" );
 
-    
-
+  
       circle
         .transition().attr("cx", 300).duration(1000).ease("elastic").each("end", trans);
 
       ellipse
         .transition().attr("cx", 300).duration(1000).ease("elastic")
 
-    
 
       function trans() {
        dataset.forEach(function(d, i) {
-        // console.log(d[6])
         circle.transition().duration(10).delay(i * 10)
-          .attr("r", rScale(d[6]))
+          .attr("r", rScale(d[6])) 
+          .attr("fill", function() {
+            if (rScale(d[6]) < 130) {
+              return "#2980b9"
+            } else if (rScale(d[6]) > 210){
+              return "#f1c40f"
+            } else if (rScale(d[6]) > 240) {
+              return "#d35400"
+            } else {
+              return "#c0392b"
+            }
+           });
+       
           // .attr("fill", "#"+((1<<24)*Math.random()|0).toString(16))
 
         ellipse.transition().duration(10).delay(i * 10)
           .attr("rx", rScale(d[6]))
 
-          // .attr("cx", 300)
-          
-          // .attr('fill-opacity', Math.random())
-          // .ease("elastic");
         text.transition().duration(10).delay(i * 10)
           .text(d[0])
-          // .attr("x", 255)
         });
       }
-  
-      var box = circle.node().getBBox();
 
       var overlay = svg.append("rect")
         .attr("class", "overlay")
-        .attr("x", 300)
-        .attr("y", h/2 - 250)
-        .attr("width", box.width)
-        .attr("height", box.height)
+        .attr("x", 200)
+        .attr("y", h/2 - 350)
+        .attr("width", 200)
+        .attr("height", 200)
         .attr('fill-opacity', 0)
-        // .attr("fill", "#2ecc71")
+        .attr("fill", "#2ecc71")
         .on("mouseover", enableInteraction);
+  
+      var box = overlay.node().getBBox();
   
     
       console.log(dataset[0][6]);
@@ -138,7 +110,7 @@ $(function() {
       function enableInteraction() {
         
         var boxScale = d3.scale.linear()
-            .domain([300, box.x + box.width])
+            .domain([200, box.x + box.width])
             .range([0, dataset.length - 1])
             .clamp(true);
 

@@ -3,7 +3,7 @@
 <head>
   <title>Rynoq</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-
+ 	
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -11,7 +11,7 @@
 <script id="home-view-template" type="text/x-handlebars-template">
 	<p>Home View Template</p>
 	<div id="selectbox">
-		<%= select(:stock, :ticker, @select_options_list, prompt: 'Select a company')%>
+		<%= select(:stock, :ticker, @select_options_list, prompt: 'Enter company/ticker')%>
 	</div>
 </script>
 <!-- show template -->
@@ -19,7 +19,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 
 	<div id="selectbox">
-		<%= select(:stock, :ticker, @select_options_list, prompt: 'Select a company')%>
+		<%= select(:stock, :ticker, @select_options_list, prompt: 'Enter company/ticker')%>
 	</div>
 
 	<div class="company_info">
@@ -28,6 +28,7 @@
 
 			<li><span>Ticker:</span> {{ticker}}</li>
 			<li><span>Description:</span> {{description}}</li>
+			<li><button id="start_animation" name="button" type="submit">Start</button></li>
 		</ul>
 	</div>
 </script>
@@ -36,5 +37,8 @@
 </div>
 
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 </body>
+
+
 </html>

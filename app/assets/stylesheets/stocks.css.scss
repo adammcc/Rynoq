@@ -4,6 +4,10 @@
 
 svg {
 	float: left;
+	position: absolute;
+	/*display: inline-block;*/
+	clear: both;
+	width: 50%;
 }
 
 span {
@@ -15,9 +19,10 @@ span {
 	/*border: 1px dashed;*/
 	margin: 140px 0px 0px 550px;
 	position: absolute;
-	float: left;
+	float: right;
 	border-left: 1px solid;
 	font-family: 'Open Sans Condensed', sans-serif;
+	clear: both;
 }
 
 .company_info ul li {
@@ -25,7 +30,7 @@ span {
 	margin-top: 13px;
 }
 
-#start_button {
+#start_animation {
  		width: 80px;
     background: none;
     cursor: pointer;
@@ -41,6 +46,7 @@ span {
 /*select box*/
 	#selectbox {
 	  padding: 10px;
+	  display: inline-block;
 	  background-color:#003540;
 	  width: 200px;
 	  position: absolute;
@@ -57,6 +63,7 @@ span {
 	  border: 1px solid #B0BECA;
 	  max-height: 350px;
 	  overflow-y: scroll;
+	  position: absolute;
 	}
 
 	.ui-autocomplete-input {
@@ -82,6 +89,7 @@ span {
 	  padding: 4px 6px;
 	  color: #353D44;
 	  cursor: pointer;
+	  background-color: #fff;
 	}
     
 	.ui-autocomplete .ui-menu-item:first-child a {

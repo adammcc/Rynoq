@@ -3,7 +3,9 @@ var app = app || {};
 app.HomeView = Backbone.View.extend({
 	el: $('#main'),
 
-	events: {},
+	events: {
+		'change #stock_ticker': 'route',
+	},
 
 	initialize: function(){
 		console.log('HomeView initialized!');
@@ -12,6 +14,14 @@ app.HomeView = Backbone.View.extend({
 
 	render: function(){
 		this.$el.html(this.template());
+		$('select').selectToAutocomplete();
 		return this;
+	},
+
+	route: function(){
+		ticker_input = $('#stock_ticker option:selected').val();
+    app.router.navigate('/stocks/' + ticker_input, {trigger: true })
+    // makeCircle(this.model.attributes.quotes)
 	}
+	
 });

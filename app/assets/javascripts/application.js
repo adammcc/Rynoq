@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.ui.auto-complete
 //= require jquery_ujs
 //= require turbolinks
 //= require underscore
@@ -20,4 +21,5 @@
 //= require_tree ./collections
 //= require_tree ./views
 //= require_tree ./routers
+//= require select_to_auto_complete
 //= require_tree .
