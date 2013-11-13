@@ -18,7 +18,7 @@
 //= require backbone
 //= require app
 //= require_tree ./models
-//= require_tree ./collections
+// require_tree ./collections
 //= require_tree ./views
 //= require_tree ./routers
 //= require select_to_auto_complete
