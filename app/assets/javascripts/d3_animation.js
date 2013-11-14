@@ -13,7 +13,7 @@ var ticker_input = 'ABBV';
 
       var svg = d3.select("body")
   			          .append("svg")
-  			          .attr("width", w)
+  			          .attr("width", 1200)
   			          .attr("height", h);
       		
       var circle = svg.selectAll("circle")
@@ -23,7 +23,7 @@ var ticker_input = 'ABBV';
       		
       circle
       	.attr("cx", -100)
-      	.attr("cy", h/2 - 250)
+      	.attr("cy", h/2 - 165)
       	.attr("r", rScale(dataset[0][6]))
       	.attr("fill", "#2980b9")
       	.attr("fill-opacity", .7);
@@ -35,10 +35,10 @@ var ticker_input = 'ABBV';
 
       ellipse
         .attr("cx", -100)
-        .attr("cy", h/2 + 43)
+        .attr("cy", h/2 + 128)
         .attr("rx", 75)
         .attr("ry", 25)
-        .attr("fill-opacity", .2);
+        .attr("fill-opacity", .1);
 
       var text = svg.selectAll("text")
         .data([0])
@@ -47,8 +47,8 @@ var ticker_input = 'ABBV';
         
       text
         .text(dataset[0][0])
-        .attr("x", 255)
-        .attr("y", h/2 - 250)
+        .attr("x", 250)
+        .attr("y", h/2 - 165)
         .attr("font-family", "sans-serif")
         .attr("font-size", "20px")
         .attr("fill", "white" );

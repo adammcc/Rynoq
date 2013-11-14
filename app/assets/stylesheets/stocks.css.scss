@@ -2,12 +2,40 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/*/
 
-svg {
+/*svg {
 	float: left;
-	position: absolute;
-	/*display: inline-block;*/
+	position: relative;
+	display: block;
 	clear: both;
-	/*width: 50%;*/
+	overflow: visible;
+	margin-left: 200px
+}*/
+
+body {
+	width: 1200px;
+}
+
+/*#home-selectbox {
+	width: 40px;
+	height: 30px;
+	margin: 0px auto;
+	border: 1px solid;
+}*/
+
+#main {
+	width: 100%;
+}
+
+#stock_left {
+	float: left;
+	width: 600px;
+	height: 800px;
+}
+
+#stock_right {
+	float: left;
+	width: 600px;
+	height: 800px;
 }
 
 span {
@@ -15,14 +43,18 @@ span {
 }
 
 .company_info {
-	width: 500px;
-	/*border: 1px dashed;*/
+	color: white;
+	width: 520px;
 	margin: 140px 0px 0px 550px;
 	position: absolute;
 	float: right;
-	border-left: 1px solid;
+	/*border-left: 1px solid;*/
 	font-family: 'Open Sans Condensed', sans-serif;
 	clear: both;
+	background-color: #383838;
+	background: rgb(0, 0, 0);
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
 }
 
 .company_info ul li {
@@ -54,17 +86,29 @@ span {
 	  right: 0;
 	}
 
+/*	#selectbox_one {
+	  padding: 10px;
+	  display: inline-block;
+	  background-color:#003540;
+	  width: 200px;
+	  position: absolute;
+	  float: left;
+	  top: 0;
+	  right: 0;
+	}
+
 	#selectbox_two {
 	  padding: 10px;
 	  display: inline-block;
 	  background-color:#003540;
 	  width: 200px;
 	  position: absolute;
+	  float: left;
 	  top: 0;
 	  left: 0;
-	}
+	}*/
 
-	#stock_one_ticke {
+	#stock_one-ticker {
 	  padding: 10px;
 	  display: inline-block;
 	  background-color:#003540;
@@ -74,7 +118,7 @@ span {
 	 left: 0;
 	}
 
-		#stock_two_ticke {
+	#stock_two_ticker {
 	  padding: 10px;
 	  display: inline-block;
 	  background-color:#003540;

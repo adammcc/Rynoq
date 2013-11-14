@@ -9,10 +9,24 @@
 <body>
 <!-- home template -->
 <script id="home-view-template" type="text/x-handlebars-template">
-	<p>Home View Template</p>
-	<div id="selectbox">
-		<%= select(:stock, :ticker, @select_options_list, prompt: 'Enter company/ticker')%>
-	</div>
+<link href='http://fonts.googleapis.com/css?family=Lato:100,400' rel='stylesheet' type='text/css'>
+	
+		<div id="home">
+			<div id="logo-box">
+				<div id="rhino">
+					<%= image_tag "rhino.png" %>
+				</div>
+
+				<div id="logo">
+					<h1>rynoq</h1>
+			 	</div>
+			</div>
+
+			<div id="home-selectbox">
+				<%= select(:stock, :ticker, @select_options_list, prompt: 'Enter company/ticker')%>
+			</div>
+		</div>
+	
 </script>
 
 <!-- show template -->
@@ -36,12 +50,18 @@
 
 <!-- battle template -->
 <script id="battle-view-template" type="text/x-handlebars-template">
-<div id="selectbox">
+<div id="selectbox-one">
 	<%= select(:stock_one, :ticker, @select_options_list, prompt: 'Enter company/ticker')%>
 </div>
 
-<div id="selectbox_two" style="left: 0;">
+<div id="selectbox-two">
 	<%= select(:stock_two, :ticker, @select_options_list, prompt: 'Enter company/ticker')%>
+</div>
+
+<div id="stock_left">
+</div>
+
+<div id="stock_right">
 </div>
 
 </script>
