@@ -100,11 +100,6 @@ var ticker_input = 'ABBV';
       var box = overlay.node().getBBox();
   
     
-      console.log(dataset[0][6]);
-      console.log(dataset[dataset.length - 1][6]);
-      console.log(box.x);
-      console.log(box.x + box.width);
-    
 
       // mouseover to change animation.
       function enableInteraction() {

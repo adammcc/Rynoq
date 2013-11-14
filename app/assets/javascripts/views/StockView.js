@@ -4,10 +4,10 @@ app.StockView = Backbone.View.extend({
 	el: $('#main'),
 
 	events: {
-		'change #stock_ticker': 'route',
+		'change #stock_ticker': 'show',
 		'click #start_animation': 'start',
-		'click .home-link' : 'gohome',
-		'click .battle-link' : 'render'
+		'click #home-link' : 'home',
+		'click #battle-link' : 'battle'
 	},
 
 	initialize: function(){
@@ -22,9 +22,9 @@ app.StockView = Backbone.View.extend({
 		return this;
 	},
 
-	route: function(){
+	show: function(){
 		ticker_input = $('#stock_ticker option:selected').val();
-    app.router.navigate('/stocks/' + ticker_input, {trigger: true })
+    app.router.navigate('stocks/' + ticker_input, {trigger: true })
     makeCircle(this.model.attributes.quotes)
 	},
 
