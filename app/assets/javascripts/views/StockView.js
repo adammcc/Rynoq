@@ -30,15 +30,5 @@ app.StockView = Backbone.View.extend({
 
 	start: function(){
 		makeCircle(this.model.attributes.quotes)
-	},
-
-	changeView : function(e) {
-		e.preventDefault();
-    app.router.navigate('stock/battle', { trigger: true });
-  },
-
-  changeView : function(e) {
-		e.preventDefault();
-    app.router.navigate('/index', { trigger: true });
-  }
+	}
 })
