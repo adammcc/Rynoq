@@ -1,0 +1,3 @@
+class RakeLogger < Logger
+
+end

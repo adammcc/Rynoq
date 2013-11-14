@@ -1,8 +1,49 @@
 namespace :stocks do
-  desc "Get the most recent data for all quotes"
-  task :update => :environment do
-  	# coming soon
+
+  desc "Get the most recent quotes for all stocks"
+  task :update, [:stock_num] => :environment do |t, args|
+  	Rails.logger.info("**********************************")
+  	Rails.logger.info("#{Time.now} - Update rake was run.")
+  	stock_num = args.stock_num || Stock.count
+  	# make the last day yesterday because Yahoo historical data is 1 day old
+  	today = Date.today.prev_day
+  	# exclude the weekend
+  	while today.saturday? || today.sunday?
+  		today = today.prev_day
+  	end
+  	# if stock market is still open move the date to the previous day
+  	# also we giving yahoo an hour to get their shit together
+  	# today = today.prev_day if Time.now.hour < 17
+
+  	stocks_to_update = []
+  	# check wich stock have quotes that need to be updated
+  	Stock.all.each do |stock|
+  		last_quote = Date.parse(stock.quotes.last[0])
+  		if today > last_quote
+  			stocks_to_update << [stock.ticker,last_quote.to_s]
+  		else
+  			puts "#{stock.ticker} is upto date".yellow
+  		end
+  	end
+
+  	stocks_to_update.take(stock_num.to_i).each do |stock|
+  		data = YahooFinance::get_historical_quotes( stock.first, 
+  																				Date.parse( stock.last ).next,
+                                      		Date.today )
+  		if !data.empty?
+	  		quotes = data.reverse
+	  		# find a stock to which needs to be updated and add new quotes
+	  		@stock = Stock.find(stock.first)
+	  		@stock.quotes.concat(quotes)
+	  		@stock.save
+	  		puts "#{stock.first} was successfully updated!".green
+	  	else
+	  		puts "No new data for #{stock.first} on YahooFinance, try after 4 PM".yellow
+	  	end
+  	end
   end
+
+  # desc "Daily stock update"
 
   desc "populate database with a number(argument) of actual S&P500 stocks witch quotes since 2000-01-01"
   task :mass_add, [:stock_num] => [:environment] do |t, args|
@@ -58,6 +99,9 @@ namespace :stocks do
 	  end
 	end
 
+
+
+#################### Methods #################################3
 	def add_stock(ticker)
 		# check if stock exists in db
 		if Stock.where(ticker: ticker).to_a.count == 0
@@ -70,6 +114,7 @@ namespace :stocks do
 				quotes = data.reverse
 				url = "http://www.bloomberg.com/quote/#{ticker}:US"
 				doc = Nokogiri::HTML(open(url))
+				# rescue the Nokogiri exception in case bloomberg doesn't have the correct data 
 				begin
 					description = doc.css(".profile").text
 					company_name = doc.css(".ticker_header_top h2").text
@@ -93,6 +138,7 @@ namespace :stocks do
 			puts "#{ticker} already exists and was not added.".yellow
 		end
 	end
+############################# End Methods #####################	
 end
 
 
