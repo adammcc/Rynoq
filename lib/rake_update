@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /home/skud/Documents/ga_wdi/projects/rynoq
+bundle exec rake stocks:update[1] >> /home/skud/Documents/ga_wdi/projects/rynoq/lib/cron_log
