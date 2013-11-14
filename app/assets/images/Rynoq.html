@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://localhost:3000/stocks/ -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Rynoq</title>
+  <link data-turbolinks-track="true" href="http://localhost:3000/assets/application.css?body=1" media="all" rel="stylesheet">
+<link data-turbolinks-track="true" href="http://localhost:3000/assets/stocks.css?body=1" media="all" rel="stylesheet">
+ 	
+  <meta content="authenticity_token" name="csrf-param">
+<meta content="yjXPZM6aIgD+jMuHEN0hrdFNxYGpA67bqUg8D9Rpx34=" name="csrf-token">
+</head>
+<body style="">
+<!-- home template -->
+<script id="home-view-template" type="text/x-handlebars-template">
+<link href='http://fonts.googleapis.com/css?family=Lato:100,400' rel='stylesheet' type='text/css'>
+	
+		<div id="home">
+			<div id="logo-box">
+				<div id="rhino">
+					<img alt="Rhino" src="/assets/rhino.png" />
+				</div>
+
+				<div id="logo">
+					<h1>rynoq</h1>
+			 	</div>
+			</div>
+
+			<div id="home-selectbox">
+				<select id="stock_ticker" name="stock[ticker]"><option value="">Enter company/ticker</option>
+<option value="ABBV">AbbVie (ABBV)</option>
+<option value="ADT">ADT Corp (ADT)</option>
+<option value="MMM">3M Company (MMM)</option>
+<option value="ABT">Abbott Laboratories (ABT)</option>
+<option value="ANF">Abercrombie &amp; Fitch Company A (ANF)</option>
+<option value="ACE">ACE Limited (ACE)</option>
+<option value="GOOG">Google Inc (GOOG)</option>
+<option value="ACN">Accenture plc (ACN)</option>
+<option value="ACT">Actavis plc (ACT)</option>
+<option value="ADBE">Adobe Systems Inc (ADBE)</option>
+<option value="AES">AES Corp (AES)</option>
+<option value="BWA">BorgWarner (BWA)</option>
+<option value="AET">Aetna Inc (AET)</option>
+<option value="AFL">AFLAC Inc (AFL)</option>
+<option value="A">Agilent Technologies Inc (A)</option>
+<option value="GAS">AGL Resources Inc. (GAS)</option>
+<option value="APD">Air Products &amp; Chemicals Inc (APD)</option>
+<option value="ARG">Airgas Inc (ARG)</option>
+<option value="AKAM">Akamai Technologies Inc (AKAM)</option>
+<option value="AA">Alcoa Inc (AA)</option>
+<option value="ALXN">Alexion Pharmaceuticals (ALXN)</option>
+<option value="ATI">Allegheny Technologies Inc (ATI)</option>
+<option value="AGN">Allergan Inc (AGN)</option>
+<option value="ALL">Allstate Corp (ALL)</option>
+<option value="ALTR">Altera Corp (ALTR)</option>
+<option value="MO">Altria Group Inc (MO)</option>
+<option value="AMZN">Amazon.com Inc (AMZN)</option>
+<option value="AEE">Ameren Corp (AEE)</option>
+<option value="AEP">American Electric Power (AEP)</option>
+<option value="AXP">American Express Co (AXP)</option>
+<option value="AIG">American Intl Group Inc (AIG)</option>
+<option value="AMT">American Tower Corp A (AMT)</option>
+<option value="AMP">Ameriprise Financial (AMP)</option>
+<option value="ABC">AmerisourceBergen Corp (ABC)</option>
+<option value="AME">Ametek (AME)</option>
+<option value="AMGN">Amgen Inc (AMGN)</option>
+<option value="APH">Amphenol Corp A (APH)</option>
+<option value="APC">Anadarko Petroleum Corp (APC)</option>
+<option value="CBG">CBRE Group (CBG)</option>
+<option value="ADI">Analog Devices, Inc. (ADI)</option>
+<option value="AON">Aon plc (AON)</option>
+<option value="APA">Apache Corporation (APA)</option>
+<option value="AIV">Apartment Investment &amp; Mgmt (AIV)</option>
+<option value="AAPL">Apple Inc. (AAPL)</option>
+<option value="AMAT">Applied Materials Inc (AMAT)</option>
+<option value="ADM">Archer-Daniels-Midland Co (ADM)</option>
+<option value="AIZ">Assurant Inc (AIZ)</option>
+<option value="T">AT&amp;T Inc (T)</option>
+<option value="ADSK">Autodesk Inc (ADSK)</option>
+<option value="ADP">Automatic Data Processing (ADP)</option>
+<option value="AN">AutoNation Inc (AN)</option>
+<option value="AZO">AutoZone Inc (AZO)</option>
+<option value="AVB">AvalonBay Communities, Inc. (AVB)</option>
+<option value="AVY">Avery Dennison Corp (AVY)</option>
+<option value="AVP">Avon Products (AVP)</option>
+<option value="BHI">Baker Hughes Inc (BHI)</option>
+<option value="BLL">Ball Corp (BLL)</option>
+<option value="BAC">Bank of America Corp (BAC)</option>
+<option value="BK">The Bank of New York Mellon Corp. (BK)</option>
+<option value="BCR">Bard (C.R.) Inc. (BCR)</option>
+<option value="BAX">Baxter International Inc. (BAX)</option>
+<option value="BBT">BB&amp;T Corporation (BBT)</option>
+<option value="BEAM">Beam Inc. (BEAM)</option>
+<option value="BDX">Becton Dickinson (BDX)</option>
+<option value="BBBY">Bed Bath &amp; Beyond (BBBY)</option>
+<option value="BMS">Bemis Company (BMS)</option>
+<option value="BBY">Best Buy Co. Inc. (BBY)</option>
+<option value="BIIB">BIOGEN IDEC Inc. (BIIB)</option>
+<option value="BLK">BlackRock (BLK)</option>
+<option value="HRB">Block H&amp;R (HRB)</option>
+<option value="BA">Boeing Company (BA)</option>
+<option value="BXP">Boston Properties (BXP)</option>
+<option value="BSX">Boston Scientific (BSX)</option>
+<option value="CFN">Carefusion (CFN)</option>
+<option value="TSLA">Tesla Motors Inc (TSLA)</option>
+<option value="BMY">Bristol-Myers Squibb (BMY)</option>
+<option value="BRCM">Broadcom Corporation (BRCM)</option>
+<option value="BF.B">Brown-Forman Corporation (BF.B)</option>
+<option value="CHRW">C. H. Robinson Worldwide (CHRW)</option>
+<option value="CA">CA, Inc. (CA)</option>
+<option value="CVC">Cablevision Systems Corp. (CVC)</option>
+<option value="COG">Cabot Oil &amp; Gas (COG)</option>
+<option value="CAM">Cameron International Corp. (CAM)</option>
+<option value="CPB">Campbell Soup (CPB)</option>
+<option value="COF">Capital One Financial (COF)</option>
+<option value="CAH">Cardinal Health Inc. (CAH)</option>
+<option value="KMX">Carmax Inc (KMX)</option>
+<option value="CCL">Carnival Corp. (CCL)</option>
+<option value="CAT">Caterpillar Inc. (CAT)</option>
+<option value="CBS">CBS Corp. (CBS)</option>
+<option value="CELG">Celgene Corp. (CELG)</option>
+<option value="CNP">CenterPoint Energy (CNP)</option>
+<option value="CTL">CenturyLink Inc (CTL)</option>
+<option value="CERN">Cerner (CERN)</option>
+<option value="CF">CF Industries Holdings Inc (CF)</option>
+<option value="SCHW">Charles Schwab (SCHW)</option>
+<option value="CHK">Chesapeake Energy (CHK)</option>
+<option value="CVX">Chevron Corp. (CVX)</option>
+<option value="CMG">Chipotle Mexican Grill (CMG)</option>
+<option value="CB">Chubb Corp. (CB)</option>
+<option value="CI">CIGNA Corp. (CI)</option>
+<option value="YHOO">Yahoo! Inc (YHOO)</option>
+<option value="GRPN">Groupon Inc (GRPN)</option>
+<option value="FB">Facebook Inc (FB)</option>
+<option value="BBRY">BlackBerry Ltd (BBRY)</option></select>
+			</div>
+		</div>
+	
+</script>
+<a href=""></a>
+<!-- show template -->
+<script id="stock-view-template" type="text/x-handlebars-template">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+	<div id="selectbox">
+		<select id="stock_ticker" name="stock[ticker]"><option value="">Enter company/ticker</option>
+<option value="ABBV">AbbVie (ABBV)</option>
+<option value="ADT">ADT Corp (ADT)</option>
+<option value="MMM">3M Company (MMM)</option>
+<option value="ABT">Abbott Laboratories (ABT)</option>
+<option value="ANF">Abercrombie &amp; Fitch Company A (ANF)</option>
+<option value="ACE">ACE Limited (ACE)</option>
+<option value="GOOG">Google Inc (GOOG)</option>
+<option value="ACN">Accenture plc (ACN)</option>
+<option value="ACT">Actavis plc (ACT)</option>
+<option value="ADBE">Adobe Systems Inc (ADBE)</option>
+<option value="AES">AES Corp (AES)</option>
+<option value="BWA">BorgWarner (BWA)</option>
+<option value="AET">Aetna Inc (AET)</option>
+<option value="AFL">AFLAC Inc (AFL)</option>
+<option value="A">Agilent Technologies Inc (A)</option>
+<option value="GAS">AGL Resources Inc. (GAS)</option>
+<option value="APD">Air Products &amp; Chemicals Inc (APD)</option>
+<option value="ARG">Airgas Inc (ARG)</option>
+<option value="AKAM">Akamai Technologies Inc (AKAM)</option>
+<option value="AA">Alcoa Inc (AA)</option>
+<option value="ALXN">Alexion Pharmaceuticals (ALXN)</option>
+<option value="ATI">Allegheny Technologies Inc (ATI)</option>
+<option value="AGN">Allergan Inc (AGN)</option>
+<option value="ALL">Allstate Corp (ALL)</option>
+<option value="ALTR">Altera Corp (ALTR)</option>
+<option value="MO">Altria Group Inc (MO)</option>
+<option value="AMZN">Amazon.com Inc (AMZN)</option>
+<option value="AEE">Ameren Corp (AEE)</option>
+<option value="AEP">American Electric Power (AEP)</option>
+<option value="AXP">American Express Co (AXP)</option>
+<option value="AIG">American Intl Group Inc (AIG)</option>
+<option value="AMT">American Tower Corp A (AMT)</option>
+<option value="AMP">Ameriprise Financial (AMP)</option>
+<option value="ABC">AmerisourceBergen Corp (ABC)</option>
+<option value="AME">Ametek (AME)</option>
+<option value="AMGN">Amgen Inc (AMGN)</option>
+<option value="APH">Amphenol Corp A (APH)</option>
+<option value="APC">Anadarko Petroleum Corp (APC)</option>
+<option value="CBG">CBRE Group (CBG)</option>
+<option value="ADI">Analog Devices, Inc. (ADI)</option>
+<option value="AON">Aon plc (AON)</option>
+<option value="APA">Apache Corporation (APA)</option>
+<option value="AIV">Apartment Investment &amp; Mgmt (AIV)</option>
+<option value="AAPL">Apple Inc. (AAPL)</option>
+<option value="AMAT">Applied Materials Inc (AMAT)</option>
+<option value="ADM">Archer-Daniels-Midland Co (ADM)</option>
+<option value="AIZ">Assurant Inc (AIZ)</option>
+<option value="T">AT&amp;T Inc (T)</option>
+<option value="ADSK">Autodesk Inc (ADSK)</option>
+<option value="ADP">Automatic Data Processing (ADP)</option>
+<option value="AN">AutoNation Inc (AN)</option>
+<option value="AZO">AutoZone Inc (AZO)</option>
+<option value="AVB">AvalonBay Communities, Inc. (AVB)</option>
+<option value="AVY">Avery Dennison Corp (AVY)</option>
+<option value="AVP">Avon Products (AVP)</option>
+<option value="BHI">Baker Hughes Inc (BHI)</option>
+<option value="BLL">Ball Corp (BLL)</option>
+<option value="BAC">Bank of America Corp (BAC)</option>
+<option value="BK">The Bank of New York Mellon Corp. (BK)</option>
+<option value="BCR">Bard (C.R.) Inc. (BCR)</option>
+<option value="BAX">Baxter International Inc. (BAX)</option>
+<option value="BBT">BB&amp;T Corporation (BBT)</option>
+<option value="BEAM">Beam Inc. (BEAM)</option>
+<option value="BDX">Becton Dickinson (BDX)</option>
+<option value="BBBY">Bed Bath &amp; Beyond (BBBY)</option>
+<option value="BMS">Bemis Company (BMS)</option>
+<option value="BBY">Best Buy Co. Inc. (BBY)</option>
+<option value="BIIB">BIOGEN IDEC Inc. (BIIB)</option>
+<option value="BLK">BlackRock (BLK)</option>
+<option value="HRB">Block H&amp;R (HRB)</option>
+<option value="BA">Boeing Company (BA)</option>
+<option value="BXP">Boston Properties (BXP)</option>
+<option value="BSX">Boston Scientific (BSX)</option>
+<option value="CFN">Carefusion (CFN)</option>
+<option value="TSLA">Tesla Motors Inc (TSLA)</option>
+<option value="BMY">Bristol-Myers Squibb (BMY)</option>
+<option value="BRCM">Broadcom Corporation (BRCM)</option>
+<option value="BF.B">Brown-Forman Corporation (BF.B)</option>
+<option value="CHRW">C. H. Robinson Worldwide (CHRW)</option>
+<option value="CA">CA, Inc. (CA)</option>
+<option value="CVC">Cablevision Systems Corp. (CVC)</option>
+<option value="COG">Cabot Oil &amp; Gas (COG)</option>
+<option value="CAM">Cameron International Corp. (CAM)</option>
+<option value="CPB">Campbell Soup (CPB)</option>
+<option value="COF">Capital One Financial (COF)</option>
+<option value="CAH">Cardinal Health Inc. (CAH)</option>
+<option value="KMX">Carmax Inc (KMX)</option>
+<option value="CCL">Carnival Corp. (CCL)</option>
+<option value="CAT">Caterpillar Inc. (CAT)</option>
+<option value="CBS">CBS Corp. (CBS)</option>
+<option value="CELG">Celgene Corp. (CELG)</option>
+<option value="CNP">CenterPoint Energy (CNP)</option>
+<option value="CTL">CenturyLink Inc (CTL)</option>
+<option value="CERN">Cerner (CERN)</option>
+<option value="CF">CF Industries Holdings Inc (CF)</option>
+<option value="SCHW">Charles Schwab (SCHW)</option>
+<option value="CHK">Chesapeake Energy (CHK)</option>
+<option value="CVX">Chevron Corp. (CVX)</option>
+<option value="CMG">Chipotle Mexican Grill (CMG)</option>
+<option value="CB">Chubb Corp. (CB)</option>
+<option value="CI">CIGNA Corp. (CI)</option>
+<option value="YHOO">Yahoo! Inc (YHOO)</option>
+<option value="GRPN">Groupon Inc (GRPN)</option>
+<option value="FB">Facebook Inc (FB)</option>
+<option value="BBRY">BlackBerry Ltd (BBRY)</option></select>
+	</div>
+
+	<div>
+		<a href=''>Home</a>
+		<a href='stock/battle'>Battle</a>
+		// <a class="home-link" href="/">Home</a>
+	
+	</div>
+
+
+
+	<div class="company_info">
+		<ul>
+			<li><span>Company Name:</span> {{company_name}}</li>
+
+			<li><span>Ticker:</span> {{ticker}}</li>
+			<li><span>Description:</span> {{description}}</li>
+			<li><button id="start_animation" name="button" type="submit">Start</button></li>
+		</ul>
+	</div>
+</script>
+
+<!-- battle template -->
+<script id="battle-view-template" type="text/x-handlebars-template">
+<div id="selectbox-one">
+	<select id="stock_one_ticker" name="stock_one[ticker]"><option value="">Enter company/ticker</option>
+<option value="ABBV">AbbVie (ABBV)</option>
+<option value="ADT">ADT Corp (ADT)</option>
+<option value="MMM">3M Company (MMM)</option>
+<option value="ABT">Abbott Laboratories (ABT)</option>
+<option value="ANF">Abercrombie &amp; Fitch Company A (ANF)</option>
+<option value="ACE">ACE Limited (ACE)</option>
+<option value="GOOG">Google Inc (GOOG)</option>
+<option value="ACN">Accenture plc (ACN)</option>
+<option value="ACT">Actavis plc (ACT)</option>
+<option value="ADBE">Adobe Systems Inc (ADBE)</option>
+<option value="AES">AES Corp (AES)</option>
+<option value="BWA">BorgWarner (BWA)</option>
+<option value="AET">Aetna Inc (AET)</option>
+<option value="AFL">AFLAC Inc (AFL)</option>
+<option value="A">Agilent Technologies Inc (A)</option>
+<option value="GAS">AGL Resources Inc. (GAS)</option>
+<option value="APD">Air Products &amp; Chemicals Inc (APD)</option>
+<option value="ARG">Airgas Inc (ARG)</option>
+<option value="AKAM">Akamai Technologies Inc (AKAM)</option>
+<option value="AA">Alcoa Inc (AA)</option>
+<option value="ALXN">Alexion Pharmaceuticals (ALXN)</option>
+<option value="ATI">Allegheny Technologies Inc (ATI)</option>
+<option value="AGN">Allergan Inc (AGN)</option>
+<option value="ALL">Allstate Corp (ALL)</option>
+<option value="ALTR">Altera Corp (ALTR)</option>
+<option value="MO">Altria Group Inc (MO)</option>
+<option value="AMZN">Amazon.com Inc (AMZN)</option>
+<option value="AEE">Ameren Corp (AEE)</option>
+<option value="AEP">American Electric Power (AEP)</option>
+<option value="AXP">American Express Co (AXP)</option>
+<option value="AIG">American Intl Group Inc (AIG)</option>
+<option value="AMT">American Tower Corp A (AMT)</option>
+<option value="AMP">Ameriprise Financial (AMP)</option>
+<option value="ABC">AmerisourceBergen Corp (ABC)</option>
+<option value="AME">Ametek (AME)</option>
+<option value="AMGN">Amgen Inc (AMGN)</option>
+<option value="APH">Amphenol Corp A (APH)</option>
+<option value="APC">Anadarko Petroleum Corp (APC)</option>
+<option value="CBG">CBRE Group (CBG)</option>
+<option value="ADI">Analog Devices, Inc. (ADI)</option>
+<option value="AON">Aon plc (AON)</option>
+<option value="APA">Apache Corporation (APA)</option>
+<option value="AIV">Apartment Investment &amp; Mgmt (AIV)</option>
+<option value="AAPL">Apple Inc. (AAPL)</option>
+<option value="AMAT">Applied Materials Inc (AMAT)</option>
+<option value="ADM">Archer-Daniels-Midland Co (ADM)</option>
+<option value="AIZ">Assurant Inc (AIZ)</option>
+<option value="T">AT&amp;T Inc (T)</option>
+<option value="ADSK">Autodesk Inc (ADSK)</option>
+<option value="ADP">Automatic Data Processing (ADP)</option>
+<option value="AN">AutoNation Inc (AN)</option>
+<option value="AZO">AutoZone Inc (AZO)</option>
+<option value="AVB">AvalonBay Communities, Inc. (AVB)</option>
+<option value="AVY">Avery Dennison Corp (AVY)</option>
+<option value="AVP">Avon Products (AVP)</option>
+<option value="BHI">Baker Hughes Inc (BHI)</option>
+<option value="BLL">Ball Corp (BLL)</option>
+<option value="BAC">Bank of America Corp (BAC)</option>
+<option value="BK">The Bank of New York Mellon Corp. (BK)</option>
+<option value="BCR">Bard (C.R.) Inc. (BCR)</option>
+<option value="BAX">Baxter International Inc. (BAX)</option>
+<option value="BBT">BB&amp;T Corporation (BBT)</option>
+<option value="BEAM">Beam Inc. (BEAM)</option>
+<option value="BDX">Becton Dickinson (BDX)</option>
+<option value="BBBY">Bed Bath &amp; Beyond (BBBY)</option>
+<option value="BMS">Bemis Company (BMS)</option>
+<option value="BBY">Best Buy Co. Inc. (BBY)</option>
+<option value="BIIB">BIOGEN IDEC Inc. (BIIB)</option>
+<option value="BLK">BlackRock (BLK)</option>
+<option value="HRB">Block H&amp;R (HRB)</option>
+<option value="BA">Boeing Company (BA)</option>
+<option value="BXP">Boston Properties (BXP)</option>
+<option value="BSX">Boston Scientific (BSX)</option>
+<option value="CFN">Carefusion (CFN)</option>
+<option value="TSLA">Tesla Motors Inc (TSLA)</option>
+<option value="BMY">Bristol-Myers Squibb (BMY)</option>
+<option value="BRCM">Broadcom Corporation (BRCM)</option>
+<option value="BF.B">Brown-Forman Corporation (BF.B)</option>
+<option value="CHRW">C. H. Robinson Worldwide (CHRW)</option>
+<option value="CA">CA, Inc. (CA)</option>
+<option value="CVC">Cablevision Systems Corp. (CVC)</option>
+<option value="COG">Cabot Oil &amp; Gas (COG)</option>
+<option value="CAM">Cameron International Corp. (CAM)</option>
+<option value="CPB">Campbell Soup (CPB)</option>
+<option value="COF">Capital One Financial (COF)</option>
+<option value="CAH">Cardinal Health Inc. (CAH)</option>
+<option value="KMX">Carmax Inc (KMX)</option>
+<option value="CCL">Carnival Corp. (CCL)</option>
+<option value="CAT">Caterpillar Inc. (CAT)</option>
+<option value="CBS">CBS Corp. (CBS)</option>
+<option value="CELG">Celgene Corp. (CELG)</option>
+<option value="CNP">CenterPoint Energy (CNP)</option>
+<option value="CTL">CenturyLink Inc (CTL)</option>
+<option value="CERN">Cerner (CERN)</option>
+<option value="CF">CF Industries Holdings Inc (CF)</option>
+<option value="SCHW">Charles Schwab (SCHW)</option>
+<option value="CHK">Chesapeake Energy (CHK)</option>
+<option value="CVX">Chevron Corp. (CVX)</option>
+<option value="CMG">Chipotle Mexican Grill (CMG)</option>
+<option value="CB">Chubb Corp. (CB)</option>
+<option value="CI">CIGNA Corp. (CI)</option>
+<option value="YHOO">Yahoo! Inc (YHOO)</option>
+<option value="GRPN">Groupon Inc (GRPN)</option>
+<option value="FB">Facebook Inc (FB)</option>
+<option value="BBRY">BlackBerry Ltd (BBRY)</option></select>
+</div>
+
+<div id="selectbox-two">
+	<select id="stock_two_ticker" name="stock_two[ticker]"><option value="">Enter company/ticker</option>
+<option value="ABBV">AbbVie (ABBV)</option>
+<option value="ADT">ADT Corp (ADT)</option>
+<option value="MMM">3M Company (MMM)</option>
+<option value="ABT">Abbott Laboratories (ABT)</option>
+<option value="ANF">Abercrombie &amp; Fitch Company A (ANF)</option>
+<option value="ACE">ACE Limited (ACE)</option>
+<option value="GOOG">Google Inc (GOOG)</option>
+<option value="ACN">Accenture plc (ACN)</option>
+<option value="ACT">Actavis plc (ACT)</option>
+<option value="ADBE">Adobe Systems Inc (ADBE)</option>
+<option value="AES">AES Corp (AES)</option>
+<option value="BWA">BorgWarner (BWA)</option>
+<option value="AET">Aetna Inc (AET)</option>
+<option value="AFL">AFLAC Inc (AFL)</option>
+<option value="A">Agilent Technologies Inc (A)</option>
+<option value="GAS">AGL Resources Inc. (GAS)</option>
+<option value="APD">Air Products &amp; Chemicals Inc (APD)</option>
+<option value="ARG">Airgas Inc (ARG)</option>
+<option value="AKAM">Akamai Technologies Inc (AKAM)</option>
+<option value="AA">Alcoa Inc (AA)</option>
+<option value="ALXN">Alexion Pharmaceuticals (ALXN)</option>
+<option value="ATI">Allegheny Technologies Inc (ATI)</option>
+<option value="AGN">Allergan Inc (AGN)</option>
+<option value="ALL">Allstate Corp (ALL)</option>
+<option value="ALTR">Altera Corp (ALTR)</option>
+<option value="MO">Altria Group Inc (MO)</option>
+<option value="AMZN">Amazon.com Inc (AMZN)</option>
+<option value="AEE">Ameren Corp (AEE)</option>
+<option value="AEP">American Electric Power (AEP)</option>
+<option value="AXP">American Express Co (AXP)</option>
+<option value="AIG">American Intl Group Inc (AIG)</option>
+<option value="AMT">American Tower Corp A (AMT)</option>
+<option value="AMP">Ameriprise Financial (AMP)</option>
+<option value="ABC">AmerisourceBergen Corp (ABC)</option>
+<option value="AME">Ametek (AME)</option>
+<option value="AMGN">Amgen Inc (AMGN)</option>
+<option value="APH">Amphenol Corp A (APH)</option>
+<option value="APC">Anadarko Petroleum Corp (APC)</option>
+<option value="CBG">CBRE Group (CBG)</option>
+<option value="ADI">Analog Devices, Inc. (ADI)</option>
+<option value="AON">Aon plc (AON)</option>
+<option value="APA">Apache Corporation (APA)</option>
+<option value="AIV">Apartment Investment &amp; Mgmt (AIV)</option>
+<option value="AAPL">Apple Inc. (AAPL)</option>
+<option value="AMAT">Applied Materials Inc (AMAT)</option>
+<option value="ADM">Archer-Daniels-Midland Co (ADM)</option>
+<option value="AIZ">Assurant Inc (AIZ)</option>
+<option value="T">AT&amp;T Inc (T)</option>
+<option value="ADSK">Autodesk Inc (ADSK)</option>
+<option value="ADP">Automatic Data Processing (ADP)</option>
+<option value="AN">AutoNation Inc (AN)</option>
+<option value="AZO">AutoZone Inc (AZO)</option>
+<option value="AVB">AvalonBay Communities, Inc. (AVB)</option>
+<option value="AVY">Avery Dennison Corp (AVY)</option>
+<option value="AVP">Avon Products (AVP)</option>
+<option value="BHI">Baker Hughes Inc (BHI)</option>
+<option value="BLL">Ball Corp (BLL)</option>
+<option value="BAC">Bank of America Corp (BAC)</option>
+<option value="BK">The Bank of New York Mellon Corp. (BK)</option>
+<option value="BCR">Bard (C.R.) Inc. (BCR)</option>
+<option value="BAX">Baxter International Inc. (BAX)</option>
+<option value="BBT">BB&amp;T Corporation (BBT)</option>
+<option value="BEAM">Beam Inc. (BEAM)</option>
+<option value="BDX">Becton Dickinson (BDX)</option>
+<option value="BBBY">Bed Bath &amp; Beyond (BBBY)</option>
+<option value="BMS">Bemis Company (BMS)</option>
+<option value="BBY">Best Buy Co. Inc. (BBY)</option>
+<option value="BIIB">BIOGEN IDEC Inc. (BIIB)</option>
+<option value="BLK">BlackRock (BLK)</option>
+<option value="HRB">Block H&amp;R (HRB)</option>
+<option value="BA">Boeing Company (BA)</option>
+<option value="BXP">Boston Properties (BXP)</option>
+<option value="BSX">Boston Scientific (BSX)</option>
+<option value="CFN">Carefusion (CFN)</option>
+<option value="TSLA">Tesla Motors Inc (TSLA)</option>
+<option value="BMY">Bristol-Myers Squibb (BMY)</option>
+<option value="BRCM">Broadcom Corporation (BRCM)</option>
+<option value="BF.B">Brown-Forman Corporation (BF.B)</option>
+<option value="CHRW">C. H. Robinson Worldwide (CHRW)</option>
+<option value="CA">CA, Inc. (CA)</option>
+<option value="CVC">Cablevision Systems Corp. (CVC)</option>
+<option value="COG">Cabot Oil &amp; Gas (COG)</option>
+<option value="CAM">Cameron International Corp. (CAM)</option>
+<option value="CPB">Campbell Soup (CPB)</option>
+<option value="COF">Capital One Financial (COF)</option>
+<option value="CAH">Cardinal Health Inc. (CAH)</option>
+<option value="KMX">Carmax Inc (KMX)</option>
+<option value="CCL">Carnival Corp. (CCL)</option>
+<option value="CAT">Caterpillar Inc. (CAT)</option>
+<option value="CBS">CBS Corp. (CBS)</option>
+<option value="CELG">Celgene Corp. (CELG)</option>
+<option value="CNP">CenterPoint Energy (CNP)</option>
+<option value="CTL">CenturyLink Inc (CTL)</option>
+<option value="CERN">Cerner (CERN)</option>
+<option value="CF">CF Industries Holdings Inc (CF)</option>
+<option value="SCHW">Charles Schwab (SCHW)</option>
+<option value="CHK">Chesapeake Energy (CHK)</option>
+<option value="CVX">Chevron Corp. (CVX)</option>
+<option value="CMG">Chipotle Mexican Grill (CMG)</option>
+<option value="CB">Chubb Corp. (CB)</option>
+<option value="CI">CIGNA Corp. (CI)</option>
+<option value="YHOO">Yahoo! Inc (YHOO)</option>
+<option value="GRPN">Groupon Inc (GRPN)</option>
+<option value="FB">Facebook Inc (FB)</option>
+<option value="BBRY">BlackBerry Ltd (BBRY)</option></select>
+</div>
+
+<div id="stock_left">
+</div>
+
+<div id="stock_right">
+</div>
+
+</script>
+
+<div id="main">
+	<link href="./Rynoq_files/css" rel="stylesheet" type="text/css">
+
+	<div id="selectbox">
+		<select id="stock_ticker" name="stock[ticker]" style="display: none;"><option value="">Enter company/ticker</option>
+<option value="ABBV">AbbVie (ABBV)</option>
+<option value="ADT">ADT Corp (ADT)</option>
+<option value="MMM">3M Company (MMM)</option>
+<option value="ABT">Abbott Laboratories (ABT)</option>
+<option value="ANF">Abercrombie &amp; Fitch Company A (ANF)</option>
+<option value="ACE">ACE Limited (ACE)</option>
+<option value="GOOG">Google Inc (GOOG)</option>
+<option value="ACN">Accenture plc (ACN)</option>
+<option value="ACT">Actavis plc (ACT)</option>
+<option value="ADBE">Adobe Systems Inc (ADBE)</option>
+<option value="AES">AES Corp (AES)</option>
+<option value="BWA">BorgWarner (BWA)</option>
+<option value="AET">Aetna Inc (AET)</option>
+<option value="AFL">AFLAC Inc (AFL)</option>
+<option value="A">Agilent Technologies Inc (A)</option>
+<option value="GAS">AGL Resources Inc. (GAS)</option>
+<option value="APD">Air Products &amp; Chemicals Inc (APD)</option>
+<option value="ARG">Airgas Inc (ARG)</option>
+<option value="AKAM">Akamai Technologies Inc (AKAM)</option>
+<option value="AA">Alcoa Inc (AA)</option>
+<option value="ALXN">Alexion Pharmaceuticals (ALXN)</option>
+<option value="ATI">Allegheny Technologies Inc (ATI)</option>
+<option value="AGN">Allergan Inc (AGN)</option>
+<option value="ALL">Allstate Corp (ALL)</option>
+<option value="ALTR">Altera Corp (ALTR)</option>
+<option value="MO">Altria Group Inc (MO)</option>
+<option value="AMZN">Amazon.com Inc (AMZN)</option>
+<option value="AEE">Ameren Corp (AEE)</option>
+<option value="AEP">American Electric Power (AEP)</option>
+<option value="AXP">American Express Co (AXP)</option>
+<option value="AIG">American Intl Group Inc (AIG)</option>
+<option value="AMT">American Tower Corp A (AMT)</option>
+<option value="AMP">Ameriprise Financial (AMP)</option>
+<option value="ABC">AmerisourceBergen Corp (ABC)</option>
+<option value="AME">Ametek (AME)</option>
+<option value="AMGN">Amgen Inc (AMGN)</option>
+<option value="APH">Amphenol Corp A (APH)</option>
+<option value="APC">Anadarko Petroleum Corp (APC)</option>
+<option value="CBG">CBRE Group (CBG)</option>
+<option value="ADI">Analog Devices, Inc. (ADI)</option>
+<option value="AON">Aon plc (AON)</option>
+<option value="APA">Apache Corporation (APA)</option>
+<option value="AIV">Apartment Investment &amp; Mgmt (AIV)</option>
+<option value="AAPL">Apple Inc. (AAPL)</option>
+<option value="AMAT">Applied Materials Inc (AMAT)</option>
+<option value="ADM">Archer-Daniels-Midland Co (ADM)</option>
+<option value="AIZ">Assurant Inc (AIZ)</option>
+<option value="T">AT&amp;T Inc (T)</option>
+<option value="ADSK">Autodesk Inc (ADSK)</option>
+<option value="ADP">Automatic Data Processing (ADP)</option>
+<option value="AN">AutoNation Inc (AN)</option>
+<option value="AZO">AutoZone Inc (AZO)</option>
+<option value="AVB">AvalonBay Communities, Inc. (AVB)</option>
+<option value="AVY">Avery Dennison Corp (AVY)</option>
+<option value="AVP">Avon Products (AVP)</option>
+<option value="BHI">Baker Hughes Inc (BHI)</option>
+<option value="BLL">Ball Corp (BLL)</option>
+<option value="BAC">Bank of America Corp (BAC)</option>
+<option value="BK">The Bank of New York Mellon Corp. (BK)</option>
+<option value="BCR">Bard (C.R.) Inc. (BCR)</option>
+<option value="BAX">Baxter International Inc. (BAX)</option>
+<option value="BBT">BB&amp;T Corporation (BBT)</option>
+<option value="BEAM">Beam Inc. (BEAM)</option>
+<option value="BDX">Becton Dickinson (BDX)</option>
+<option value="BBBY">Bed Bath &amp; Beyond (BBBY)</option>
+<option value="BMS">Bemis Company (BMS)</option>
+<option value="BBY">Best Buy Co. Inc. (BBY)</option>
+<option value="BIIB">BIOGEN IDEC Inc. (BIIB)</option>
+<option value="BLK">BlackRock (BLK)</option>
+<option value="HRB">Block H&amp;R (HRB)</option>
+<option value="BA">Boeing Company (BA)</option>
+<option value="BXP">Boston Properties (BXP)</option>
+<option value="BSX">Boston Scientific (BSX)</option>
+<option value="CFN">Carefusion (CFN)</option>
+<option value="TSLA">Tesla Motors Inc (TSLA)</option>
+<option value="BMY">Bristol-Myers Squibb (BMY)</option>
+<option value="BRCM">Broadcom Corporation (BRCM)</option>
+<option value="BF.B">Brown-Forman Corporation (BF.B)</option>
+<option value="CHRW">C. H. Robinson Worldwide (CHRW)</option>
+<option value="CA">CA, Inc. (CA)</option>
+<option value="CVC">Cablevision Systems Corp. (CVC)</option>
+<option value="COG">Cabot Oil &amp; Gas (COG)</option>
+<option value="CAM">Cameron International Corp. (CAM)</option>
+<option value="CPB">Campbell Soup (CPB)</option>
+<option value="COF">Capital One Financial (COF)</option>
+<option value="CAH">Cardinal Health Inc. (CAH)</option>
+<option value="KMX">Carmax Inc (KMX)</option>
+<option value="CCL">Carnival Corp. (CCL)</option>
+<option value="CAT">Caterpillar Inc. (CAT)</option>
+<option value="CBS">CBS Corp. (CBS)</option>
+<option value="CELG">Celgene Corp. (CELG)</option>
+<option value="CNP">CenterPoint Energy (CNP)</option>
+<option value="CTL">CenturyLink Inc (CTL)</option>
+<option value="CERN">Cerner (CERN)</option>
+<option value="CF">CF Industries Holdings Inc (CF)</option>
+<option value="SCHW">Charles Schwab (SCHW)</option>
+<option value="CHK">Chesapeake Energy (CHK)</option>
+<option value="CVX">Chevron Corp. (CVX)</option>
+<option value="CMG">Chipotle Mexican Grill (CMG)</option>
+<option value="CB">Chubb Corp. (CB)</option>
+<option value="CI">CIGNA Corp. (CI)</option>
+<option value="YHOO">Yahoo! Inc (YHOO)</option>
+<option value="GRPN">Groupon Inc (GRPN)</option>
+<option value="FB">Facebook Inc (FB)</option>
+<option value="BBRY">BlackBerry Ltd (BBRY)</option></select><input class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+	</div>
+
+	<div>
+		<a href="">Home</a>
+		<a href="http://localhost:3000/stocks/stock/battle">Battle</a>
+		// <a class="home-link" href="http://localhost:3000/">Home</a>
+	
+	</div>
+
+
+
+	<div class="company_info">
+		<ul>
+			<li><span>Company Name:</span> AGL Resources Inc.</li>
+
+			<li><span>Ticker:</span> GAS</li>
+			<li><span>Description:</span> AGL Resources Inc. primarily sells and distributes natural gas to customers in Georgia and southeastern Tennessee.  The Company also holds interests in other energy-related businesses, including natural gas and electricity marketing, wholesale and retail propane sales, gas supply services, and consumer products.</li>
+			<li><button id="start_animation" name="button" type="submit">Start</button></li>
+		</ul>
+	</div>
+</div>
+
+<script data-turbolinks-track="true" src="./Rynoq_files/jquery.js"></script>
+<script data-turbolinks-track="true" src="./Rynoq_files/jquery.ui.auto-complete.js"></script>
+<script data-turbolinks-track="true" src="./Rynoq_files/jquery_ujs.js"></script>
+<script data-turbolinks-track="true" src="./Rynoq_files/turbolinks.js"></script>
+<script data-turbolinks-track="true" src="./Rynoq_files/underscore.js"></script>
+<script data-turbolinks-track="true" src="./Rynoq_files/backbone.js"></script>
+<script data-turbolinks-track="true" src="./Rynoq_files/app.js"></script>
+<script data-turbolinks-track="true" src="./Rynoq_files/Stock.js"></script>
+<script data-turbolinks-track="true" src="./Rynoq_files/BattleView.js"></script>
+<script data-turbolinks-track="true" src="./Rynoq_files/HomeView.js"></script>
+<script data-turbolinks-track="true" src="./Rynoq_files/StockView.js"></script>
+<script data-turbolinks-track="true" src="./Rynoq_files/Router.js"></script>
+<script data-turbolinks-track="true" src="./Rynoq_files/select_to_auto_complete.js"></script>
+<script data-turbolinks-track="true" src="./Rynoq_files/d3.v3.min.js"></script>
+<script data-turbolinks-track="true" src="./Rynoq_files/d3_animation.js"></script>
+<script data-turbolinks-track="true" src="./Rynoq_files/d3_animation_two.js"></script>
+<script data-turbolinks-track="true" src="./Rynoq_files/handlebars.js"></script>
+<script data-turbolinks-track="true" src="./Rynoq_files/modernizr.js"></script>
+<script data-turbolinks-track="true" src="./Rynoq_files/application.js"></script>
+<script src="./Rynoq_files/jquery-migrate-1.2.1.js"></script>
+
+
+
+
+<ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 1; top: 0px; left: 0px; display: none;"></ul><svg width="1200" height="800"><circle cx="300" cy="235" r="69.15490476190476" fill="#2980b9" fill-opacity="0.7" class=""></circle><ellipse cx="300" cy="528" rx="69.15490476190476" ry="25" fill-opacity="0.1"></ellipse><text class="date" x="250" y="235" font-family="sans-serif" font-size="20px" fill="white">2013-10-15</text><text class="price" x="268" y="258" font-family="sans-serif" font-size="20px" fill="white">$44.71</text><rect class="overlay" x="200" y="50" width="200" height="200" fill-opacity="0" fill="#2ecc71"></rect></svg></body></html>

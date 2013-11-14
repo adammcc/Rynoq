@@ -5,7 +5,9 @@ app.StockView = Backbone.View.extend({
 
 	events: {
 		'change #stock_ticker': 'route',
-		'click #start_animation': 'start'
+		'click #start_animation': 'start',
+		'click .home-link' : 'gohome',
+		'click .battle-link' : 'render'
 	},
 
 	initialize: function(){
@@ -28,6 +30,16 @@ app.StockView = Backbone.View.extend({
 
 	start: function(){
 		makeCircle(this.model.attributes.quotes)
-	}
+	},
 
+	changeView : function(e) {
+		e.preventDefault();
+    app.router.navigate('/battle', { trigger: true });
+  },
+
+  changeView : function(e) {
+		e.preventDefault();
+    app.router.navigate('/index', { trigger: true });
+  }
 })
+;

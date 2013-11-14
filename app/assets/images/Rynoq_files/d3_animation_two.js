@@ -1,11 +1,11 @@
 
-var w = 1200;
+var w = 600;
 var h = 800;
 var ticker_input = 'ABBV';
 
 
-    function makeCircle(dataset) {
-      d3.selectAll("svg").remove();
+    function makeCircleTwo(dataset) {
+      // d3.selectAll("svg").remove();
 
       var rScale = d3.scale.pow()
                     .domain([0,1050])
@@ -22,7 +22,7 @@ var ticker_input = 'ABBV';
       						    .append("circle");
       		
       circle
-      	.attr("cx", -100)
+      	.attr("cx", 1400)
       	.attr("cy", h/2 - 165)
       	.attr("r", rScale(dataset[0][6]))
       	.attr("fill", "#2980b9")
@@ -34,52 +34,31 @@ var ticker_input = 'ABBV';
                       .append("ellipse");
 
       ellipse
-        .attr("cx", -100)
+        .attr("cx", 1400)
         .attr("cy", h/2 + 128)
-        .attr("rx", rScale(dataset[0][6]))
-        .attr("ry", 15)
+        .attr("rx", 75)
+        .attr("ry", 25)
         .attr("fill-opacity", .1);
 
-      var date = svg.selectAll("text.date")
+      var text = svg.selectAll("text")
         .data([0])
         .enter()
         .append("text");
         
-      date
-        .attr("class", "date")
+      text
         .text(dataset[0][0])
-        .attr("x", -100)
+        .attr("x", 800)
         .attr("y", h/2 - 165)
         .attr("font-family", "sans-serif")
         .attr("font-size", "20px")
         .attr("fill", "white" );
 
-      var price = svg.selectAll("text.price")
-        .data([0])
-        .enter()
-        .append("text");
-        
-      price
-        .attr("class", "price")
-        .text("$" + dataset[0][6])
-        .attr("x", -100)
-        .attr("y", h/2 - 142)
-        .attr("font-family", "sans-serif")
-        .attr("font-size", "20px")
-        .attr("fill", "white" );
-
-
+  
       circle
-        .transition().attr("cx", 300).duration(1000).ease("elastic").each("end", trans);
+        .transition().attr("cx", 850).duration(1000).ease("elastic").each("end", trans);
 
       ellipse
-        .transition().attr("cx", 300).duration(1000).ease("elastic")
-
-      date
-        .transition().attr("x", 250).duration(1000).ease("elastic")
-
-      price
-        .transition().attr("x", 268).duration(1000).ease("elastic")
+        .transition().attr("cx", 850).duration(1000).ease("elastic")
 
 
       function trans() {
@@ -97,22 +76,20 @@ var ticker_input = 'ABBV';
               return "#c0392b"
             }
            });
+       
+          // .attr("fill", "#"+((1<<24)*Math.random()|0).toString(16))
 
         ellipse.transition().duration(10).delay(i * 10)
           .attr("rx", rScale(d[6]))
 
-        date.transition().duration(10).delay(i * 10)
+        text.transition().duration(10).delay(i * 10)
           .text(d[0])
-
-        price.transition().duration(10).delay(i * 10)
-          .text("$" + d[6])
-
         });
       }
 
-      var overlay = svg.append("rect")
-        .attr("class", "overlay")
-        .attr("x", 200)
+      var overlay_two = svg.append("rect")
+        .attr("class", "overlay_two")
+        .attr("x", 750)
         .attr("y", h/2 - 350)
         .attr("width", 200)
         .attr("height", 200)
@@ -120,59 +97,58 @@ var ticker_input = 'ABBV';
         .attr("fill", "#2ecc71")
         .on("mouseover", enableInteraction);
   
-      var box = overlay.node().getBBox();
+      var box_two = overlay_two.node().getBBox();
   
     
       console.log(dataset[0][6]);
       console.log(dataset[dataset.length - 1][6]);
-      console.log(box.x);
-      console.log(box.x + box.width);
+      console.log(box_two.x);
+      console.log(box_two.x + box_two.width);
     
 
       // mouseover to change animation.
       function enableInteraction() {
         
-        var boxScale = d3.scale.linear()
-            .domain([200, box.x + box.width])
+        var boxScaleTwo = d3.scale.linear()
+            .domain([750, box_two.x + box_two.width])
             .range([0, dataset.length - 1])
             .clamp(true);
 
         // Cancel the current transitions.
         circle.transition().duration(0);
-        date.transition().duration(0);
-        price.transition().duration(0);
+        text.transition().duration(0);
         ellipse.transition().duration(0);
 
-        overlay
-            .on("mouseover", mouseover)
-            .on("mouseout", mouseout)
-            .on("mousemove", mousemove)
-            .on("touchmove", mousemove);
+        overlay_two
+            .on("mouseover", mouseoverTwo)
+            .on("mouseout", mouseoutTwo)
+            .on("mousemove", mousemoveTwo)
+            .on("touchmove", mousemoveTwo);
 
         
-        function mouseover() {
+        function mouseoverTwo() {
           console.log('yo');
           circle.classed("active", true);
         }
 
-        function mouseout() {
+        function mouseoutTwo() {
           console.log("yo i'm out");
           circle.classed("active", false);
         }
 
-        function mousemove() {
+        function mousemoveTwo() {
           // console.log('yo move');
           // console.log(Math.floor(boxScale(d3.mouse(this)[0])));
-          displayChange(Math.floor(boxScale(d3.mouse(this)[0])));
+          displayChangeTwo(Math.floor(boxScaleTwo(d3.mouse(this)[0])));
         }
       
     // Updates the display to show the specified date and size.
-        function displayChange(index) {
-          date.text(dataset[index][0]);
-          price.text("$" + dataset[index][6]);
+        function displayChangeTwo(index) {
+          text.text(dataset[index][0]);
           circle.attr("r", rScale(dataset[index][6]));
           ellipse.attr("rx", rScale(dataset[index][6]));
         }
       }
     }
 
+;

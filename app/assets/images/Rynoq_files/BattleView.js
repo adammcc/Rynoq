@@ -4,7 +4,7 @@ app.BattleView = Backbone.View.extend({
 	el: $('#main'),
 
 	events: {
-		'change #stock_two_ticker': 'route'
+		'change #stock_two_ticker': 'route',
 	},
 
 	initialize: function(){

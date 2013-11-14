@@ -13,7 +13,7 @@ var ticker_input = 'ABBV';
 
       var svg = d3.select("body")
   			          .append("svg")
-  			          .attr("width", w)
+  			          .attr("width", 1200)
   			          .attr("height", h);
       		
       var circle = svg.selectAll("circle")
@@ -36,8 +36,8 @@ var ticker_input = 'ABBV';
       ellipse
         .attr("cx", -100)
         .attr("cy", h/2 + 128)
-        .attr("rx", rScale(dataset[0][6]))
-        .attr("ry", 15)
+        .attr("rx", 75)
+        .attr("ry", 25)
         .attr("fill-opacity", .1);
 
       var date = svg.selectAll("text.date")
@@ -107,6 +107,8 @@ var ticker_input = 'ABBV';
         price.transition().duration(10).delay(i * 10)
           .text("$" + d[6])
 
+        // price.transition().duration(10).delay(i * 10)
+        //   .price("$" + d[6])
         });
       }
 
@@ -176,3 +178,4 @@ var ticker_input = 'ABBV';
       }
     }
 
+;
