@@ -2,18 +2,33 @@
 <html>
 <head>
   <title>Rynoq</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
  	
   <%= csrf_meta_tags %>
 </head>
 <body>
 <!-- home template -->
 <script id="home-view-template" type="text/x-handlebars-template">
-	<p>Home View Template</p>
-	<div id="selectbox">
-		<%= select(:stock, :ticker, @select_options_list, prompt: 'Enter company/ticker')%>
-	</div>
+<link href='http://fonts.googleapis.com/css?family=Lato:100,400' rel='stylesheet' type='text/css'>
+	
+		<div id="home">
+			<div id="logo-box">
+				<div id="rhino">
+					<%= image_tag "rhino.png" %>
+				</div>
+
+				<div id="logo">
+					<h1>rynoq</h1>
+			 	</div>
+			</div>
+
+			<div id="home-selectbox">
+				<%= select(:stock, :ticker, @select_options_list, prompt: 'Enter company/ticker')%>
+			</div>
+		</div>
+	
 </script>
+
 <!-- show template -->
 <script id="stock-view-template" type="text/x-handlebars-template">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
@@ -31,6 +46,24 @@
 			<li><button id="start_animation" name="button" type="submit">Start</button></li>
 		</ul>
 	</div>
+</script>
+
+<!-- battle template -->
+<script id="battle-view-template" type="text/x-handlebars-template">
+<div id="selectbox-one">
+	<%= select(:stock_one, :ticker, @select_options_list, prompt: 'Enter company/ticker')%>
+</div>
+
+<div id="selectbox-two">
+	<%= select(:stock_two, :ticker, @select_options_list, prompt: 'Enter company/ticker')%>
+</div>
+
+<div id="stock_left">
+</div>
+
+<div id="stock_right">
+</div>
+
 </script>
 
 <div id="main">

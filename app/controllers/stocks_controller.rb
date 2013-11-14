@@ -22,6 +22,11 @@ class StocksController < ApplicationController
       format.json {render :json => @stock}
 		end
 	end 
+
+	def battle
+		
+	end
+
 end
 
 
