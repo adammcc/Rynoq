@@ -28,7 +28,7 @@
 		</div>
 	
 </script>
-
+<a href=""></a>
 <!-- show template -->
 <script id="stock-view-template" type="text/x-handlebars-template">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
@@ -36,6 +36,15 @@
 	<div id="selectbox">
 		<%= select(:stock, :ticker, @select_options_list, prompt: 'Enter company/ticker')%>
 	</div>
+
+	<div>
+		<a href=''>Home</a>
+		<a href='stock/battle'>Battle</a>
+		// <%= link_to "Home", root_path, :class => "home-link" %>
+	
+	</div>
+
+
 
 	<div class="company_info">
 		<ul>
