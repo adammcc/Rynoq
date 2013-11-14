@@ -20,6 +20,7 @@
 # Learn more: http://github.com/javan/whenever
 
 set :output, "/home/skud/Documents/ga_wdi/projects/rynoq/lib/tasks/cron_log"
+# */1 * * * * /bin/bash -l -c 'cd /var/www/rynoq && RAILS_ENV=production bundle exec rake stocks:update --silent >> /var/www/rynoq/lib/tasks/cron_log 2>&1'
 
 every '*/1 * * * *' do
 	rake "stocks:update"

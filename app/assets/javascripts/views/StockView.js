@@ -29,5 +29,4 @@ app.StockView = Backbone.View.extend({
 	start: function(){
 		makeCircle(this.model.attributes.quotes)
 	}
-
 })

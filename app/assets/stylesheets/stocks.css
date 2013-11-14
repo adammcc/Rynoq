@@ -4,7 +4,7 @@
 
 
 body {
-	background: url('nyc.jpg');
+	background: url('/images/nyc.jpg');
 	z-index: -9999;
 	margin: 0px;
 }
