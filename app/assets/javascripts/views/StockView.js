@@ -5,7 +5,9 @@ app.StockView = Backbone.View.extend({
 
 	events: {
 		'change #stock_ticker': 'show',
-		'click #start_animation': 'start'
+		'click #start_animation': 'start',
+		'click #home_link': 'home',
+		'click #battle_link': 'battle'
 	},
 
 	initialize: function(){
@@ -17,10 +19,7 @@ app.StockView = Backbone.View.extend({
 		var template = Handlebars.compile($('#stock-view-template').html());
 		this.$el.html(template(this.model.toJSON()));
 		// convert form to an auto complete form
-		console.log(document.URL);
 		$('select').selectToAutocomplete();
-		console.log(document.URL);
-		makeCircle(this.model.attributes.quotes);
 		return this;
 	},
 
