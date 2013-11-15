@@ -16,12 +16,12 @@ var price;
     function makeCircle(dataset) {
       d3.selectAll("svg").remove();
 
-      if (circle != null) {
-        circle.transition().duration(0);
-        date.transition().duration(0);
-        price.transition().duration(0);
-        ellipse.transition().duration(0);
-      }
+      // if (circle != null) {
+      //   circle.transition().duration(0);
+      //   date.transition().duration(0);
+      //   price.transition().duration(0);
+      //   ellipse.transition().duration(0);
+      // }
 
       var rScale = d3.scale.pow()
                     .domain([0,1050])
