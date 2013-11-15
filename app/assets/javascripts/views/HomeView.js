@@ -4,7 +4,7 @@ app.HomeView = Backbone.View.extend({
 	el: $('#main'),
 
 	events: {
-		'change #stock_ticker': 'route',
+		'change #stock_ticker': 'show',
 	},
 
 	initialize: function(){
@@ -18,8 +18,9 @@ app.HomeView = Backbone.View.extend({
 		return this;
 	},
 
-	route: function(){
-		if ($('#stock_ticker').val() != ''){
+	show: function(e){
+		e.preventDefault();
+		if ($('#stock_ticker') != ''){
 			ticker_input = $('#stock_ticker option:selected').val();
 	    app.router.navigate('stocks/' + ticker_input, {trigger: true })
     }
