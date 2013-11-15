@@ -11,12 +11,12 @@ var price_two;
     function makeCircleTwo(dataset) {
       // d3.selectAll("svg").remove();
 
-      // if (circle_two != null) {
-      //   circle_two.transition().duration(0);
-      //   date_two.transition().duration(0);
-      //   price_two.transition().duration(0);
-      //   ellipse_two.transition().duration(0);
-      // }
+      if (circle_two != null) {
+        circle_two.transition().duration(0);
+        date_two.transition().duration(0);
+        price_two.transition().duration(0);
+        ellipse_two.transition().duration(0);
+      }
 
       var rScale = d3.scale.pow()
                     .domain([0,1050])
@@ -51,13 +51,13 @@ var price_two;
         .attr("ry", 25)
         .attr("fill-opacity", .2);
 
-      date_two = svg.selectAll("text.date")
+      date_two = svg.selectAll("text.date_two")
         .data([0])
         .enter()
         .append("text");
         
       date_two
-        .attr("class", "date")
+        .attr("class", "date_two")
         .text(dataset[0][0])
         .attr("x", 1400)
         .attr("y", h/2 - 165)
@@ -65,13 +65,13 @@ var price_two;
         .attr("font-size", "20px")
         .attr("fill", "white" );
 
-     price_two = svg.selectAll("text.price")
+     price_two = svg.selectAll("text.price_two")
         .data([0])
         .enter()
         .append("text");
         
       price_two
-        .attr("class", "price")
+        .attr("class", "price_two")
         .text("$" + dataset[0][6])
         .attr("x", 1400)
         .attr("y", h/2 - 142)
@@ -93,7 +93,7 @@ var price_two;
 
       function trans() {
        dataset.forEach(function(d, i) {
-        circle.transition().duration(10).delay(i * 10)
+        circle_two.transition().duration(10).delay(i * 10)
           .attr("r", rScale(d[6])) 
           .attr("fill", function() {
             if (rScale(d[6]) < 130) {
@@ -178,7 +178,7 @@ var price_two;
       
     // Updates the display to show the specified date and size.
         function displayChangeTwo(index) {
-          date.text(dataset[index][0]);
+          date_two.text(dataset[index][0]);
           price_two.text("$" + dataset[index][6]);
           circle_two.attr("r", rScale(dataset[index][6]));
           ellipse_two.attr("rx", rScale(dataset[index][6]));
