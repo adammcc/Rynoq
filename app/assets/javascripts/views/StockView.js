@@ -40,6 +40,7 @@ app.StockView = Backbone.View.extend({
 
 	battle: function(e){
 		e.preventDefault();
+		$('svg').remove();
 		app.router.navigate('battle', {trigger:true})
 	}
 })

@@ -119,6 +119,10 @@ a:active {color:#FFF;}  /* selected link */
     width: 120px;
 }
 
+#start_battle {
+	height: 30px;
+}
+
 .start_battle {
 	width: 40px;
 	height: 25;

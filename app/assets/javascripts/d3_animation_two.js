@@ -2,10 +2,10 @@
 var w = 600;
 var h = 800;
 var ticker_input = 'ABBV';
-var circle_two = null;
-var ellipse_two;
-var date_two;
-var price_two;
+// var circle_two = null;
+// var ellipse_two;
+// var date_two;
+// var price_two;
 
 
     function makeCircleTwo(dataset) {
@@ -27,7 +27,7 @@ var price_two;
   			          .attr("width", w)
   			          .attr("height", h);
       		
-      circle_two = svg.selectAll("circle")
+      var circle_two = svg.selectAll("circle")
       						    .data([0])
       						    .enter()
       						    .append("circle");
@@ -39,7 +39,7 @@ var price_two;
       	.attr("fill", "#2980b9")
       	.attr("fill-opacity", .6);
 
-      ellipse_two = svg.selectAll("ellipse")
+      var ellipse_two = svg.selectAll("ellipse")
                       .data([0])
                       .enter()
                       .append("ellipse");
@@ -51,7 +51,7 @@ var price_two;
         .attr("ry", 25)
         .attr("fill-opacity", .2);
 
-      date_two = svg.selectAll("text.date_two")
+      var date_two = svg.selectAll("text.date_two")
         .data([0])
         .enter()
         .append("text");
@@ -65,7 +65,7 @@ var price_two;
         .attr("font-size", "20px")
         .attr("fill", "white" );
 
-     price_two = svg.selectAll("text.price_two")
+     var price_two = svg.selectAll("text.price_two")
         .data([0])
         .enter()
         .append("text");
@@ -180,7 +180,19 @@ var price_two;
         function displayChangeTwo(index) {
           date_two.text(dataset[index][0]);
           price_two.text("$" + dataset[index][6]);
-          circle_two.attr("r", rScale(dataset[index][6]));
+          circle_two
+            .attr("r", rScale(dataset[index][6]))
+            .attr("fill", function() {
+            if (rScale(dataset[index][6]) < 130) {
+              return "#2980b9"
+            } else if (rScale(dataset[index][6]) > 210) {
+              return "#f1c40f"
+            } else if (rScale(dataset[index][6]) > 240) {
+              return "#d35400"
+            } else {
+              return "#c0392b"
+            }
+        });
           ellipse_two.attr("rx", rScale(dataset[index][6]));
         }
       }

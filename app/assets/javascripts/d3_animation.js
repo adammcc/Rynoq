@@ -177,9 +177,23 @@ var ticker_input = 'ABBV';
   
 // Updates the display to show the specified date and size.
     function displayChange(index) {
-      date.text(dataset[index][0]);
-      price.text("$" + dataset[index][6]);
-      circle.attr("r", rScale(dataset[index][6]));
+      date.text(dataset[index][0])
+      price.text("$" + dataset[index][6])
+      circle
+        .attr("r", rScale(dataset[index][6]))
+
+        .attr("fill", function() {
+            if (rScale(dataset[index][6]) < 130) {
+              return "#2980b9"
+            } else if (rScale(dataset[index][6]) > 210) {
+              return "#f1c40f"
+            } else if (rScale(dataset[index][6]) > 240) {
+              return "#d35400"
+            } else {
+              return "#c0392b"
+            }
+        });
+
       ellipse.attr("rx", rScale(dataset[index][6]));
     }
   }
