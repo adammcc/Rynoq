@@ -2,6 +2,8 @@
 
 Rynoq let's you visualize and animate historical stock volatility.
 
+(Demo:)[http://rynoq.com/]
+
 ==Technology
 
 * Rails 4
