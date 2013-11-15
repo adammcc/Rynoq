@@ -10,6 +10,10 @@ body {
 	z-index: -9999;
 }
 
+#main {
+	z-index: -99999;
+}
+
 svg {
 	clear: both;
 	float: left;
@@ -102,17 +106,25 @@ a:active {color:#FFF;}  /* selected link */
 	width: 202px;
 }
 
-#start_animation {
+#start_animation, #start_battle {
     background: none;
     border: 1px solid gray;
     color: #fff;
     cursor: pointer;
     font-family: 'voltaeftu-regular',Times New Roman;
     font-size: 16px;
-    margin-left: 0px;
+    margin: 40px auto;
     padding: 0px;
-    width: 80px;
+    width: 120px;
 }
+
+.start_battle {
+	width: 40px;
+	height: 25;
+	margin: 0px auto;
+}
+
+
 
 /*select boxes*/
 	#selectbox {

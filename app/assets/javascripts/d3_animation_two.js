@@ -2,10 +2,21 @@
 var w = 600;
 var h = 800;
 var ticker_input = 'ABBV';
+var circle_two = null;
+var ellipse_two;
+var date_two;
+var price_two;
 
 
     function makeCircleTwo(dataset) {
       // d3.selectAll("svg").remove();
+
+      if (circle_two != null) {
+        circle_two.transition().duration(0);
+        date_two.transition().duration(0);
+        price_two.transition().duration(0);
+        ellipse_two.transition().duration(0);
+      }
 
       var rScale = d3.scale.pow()
                     .domain([0,1050])
@@ -16,36 +27,36 @@ var ticker_input = 'ABBV';
   			          .attr("width", w)
   			          .attr("height", h);
       		
-      var circle = svg.selectAll("circle")
+      circle_two = svg.selectAll("circle")
       						    .data([0])
       						    .enter()
       						    .append("circle");
       		
-      circle
+      circle_two
       	.attr("cx", 1400)
       	.attr("cy", h/2 - 165)
       	.attr("r", rScale(dataset[0][6]))
       	.attr("fill", "#2980b9")
       	.attr("fill-opacity", .7);
 
-      var ellipse = svg.selectAll("ellipse")
+      ellipse_two = svg.selectAll("ellipse")
                       .data([0])
                       .enter()
                       .append("ellipse");
 
-      ellipse
+      ellipse_two
         .attr("cx", 1400)
         .attr("cy", h/2 + 128)
         .attr("rx", 75)
         .attr("ry", 25)
         .attr("fill-opacity", .1);
 
-      var date = svg.selectAll("text.date")
+      date_two = svg.selectAll("text.date")
         .data([0])
         .enter()
         .append("text");
         
-      date
+      date_two
         .attr("class", "date")
         .text(dataset[0][0])
         .attr("x", 1400)
@@ -54,12 +65,12 @@ var ticker_input = 'ABBV';
         .attr("font-size", "20px")
         .attr("fill", "white" );
 
-     var price = svg.selectAll("text.price")
+     price_two = svg.selectAll("text.price")
         .data([0])
         .enter()
         .append("text");
         
-      price
+      price_two
         .attr("class", "price")
         .text("$" + dataset[0][6])
         .attr("x", 1400)
@@ -68,16 +79,16 @@ var ticker_input = 'ABBV';
         .attr("font-size", "20px")
         .attr("fill", "white" );
   
-      circle
+      circle_two
         .transition().attr("cx", 850).duration(1000).ease("elastic").each("end", trans);
 
-      ellipse
+      ellipse_two
         .transition().attr("cx", 850).duration(1000).ease("elastic")
 
-       date
+       date_two
         .transition().attr("x", 800).duration(1000).ease("elastic")
 
-      price
+      price_two
         .transition().attr("x", 817).duration(1000).ease("elastic")
 
       function trans() {
@@ -98,13 +109,13 @@ var ticker_input = 'ABBV';
        
           // .attr("fill", "#"+((1<<24)*Math.random()|0).toString(16))
 
-        ellipse.transition().duration(10).delay(i * 10)
+        ellipse_two.transition().duration(10).delay(i * 10)
           .attr("rx", rScale(d[6]))
 
-        date.transition().duration(10).delay(i * 10)
+        date_two.transition().duration(10).delay(i * 10)
           .text(d[0])
 
-        price.transition().duration(10).delay(i * 10)
+        price_two.transition().duration(10).delay(i * 10)
           .text("$" + d[6])
          });
       }
@@ -137,10 +148,10 @@ var ticker_input = 'ABBV';
             .clamp(true);
 
         // Cancel the current transitions.
-        circle.transition().duration(0);
-        date.transition().duration(0);
-        price.transition().duration(0);
-        ellipse.transition().duration(0);
+        circle_two.transition().duration(0);
+        date_two.transition().duration(0);
+        price_two.transition().duration(0);
+        ellipse_two.transition().duration(0);
 
         overlay_two
             .on("mouseover", mouseoverTwo)
@@ -156,7 +167,7 @@ var ticker_input = 'ABBV';
 
         function mouseoutTwo() {
           console.log("yo i'm out");
-          circle.classed("active", false);
+          circle_two.classed("active", false);
         }
 
         function mousemoveTwo() {
@@ -168,9 +179,9 @@ var ticker_input = 'ABBV';
     // Updates the display to show the specified date and size.
         function displayChangeTwo(index) {
           date.text(dataset[index][0]);
-          price.text("$" + dataset[index][6]);
-          circle.attr("r", rScale(dataset[index][6]));
-          ellipse.attr("rx", rScale(dataset[index][6]));
+          price_two.text("$" + dataset[index][6]);
+          circle_two.attr("r", rScale(dataset[index][6]));
+          ellipse_two.attr("rx", rScale(dataset[index][6]));
         }
       }
     }

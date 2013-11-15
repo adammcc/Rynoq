@@ -4,7 +4,7 @@ app.BattleView = Backbone.View.extend({
 	el: $('#main'),
 
 	events: {
-		'change #stock_two_ticker': 'route'
+		'click #start_battle': 'route'
 	},
 
 	initialize: function(){
@@ -21,7 +21,7 @@ app.BattleView = Backbone.View.extend({
 	route: function(){
 		ticker_input = $('#stock_two_ticker option:selected').val();
 		ticker_input_one = $('#stock_one_ticker option:selected').val();
-    // console.log(ticker_input)
+    console.log(ticker_input)
 
     var stock = new app.Stock({id:ticker_input});
     stock.fetch({
@@ -40,7 +40,8 @@ app.BattleView = Backbone.View.extend({
 				console.log(response.quotes)
 				// console.log('Stock fetched successfully!');
 				makeCircleTwo(response.quotes)
-			}
+		}
+
 		});
 	}
 });
