@@ -1,11 +1,26 @@
 
+// var app = app || {};
+
+// app.Circle = function() { 
+
 var w = 1200;
 var h = 800;
 var ticker_input = 'ABBV';
+var circle = null;
+var ellipse;
+var date;
+var price;
 
 
     function makeCircle(dataset) {
       d3.selectAll("svg").remove();
+
+      // if (circle != null) {
+      //   circle.transition().duration(0);
+      //   date.transition().duration(0);
+      //   price.transition().duration(0);
+      //   ellipse.transition().duration(0);
+      // }
 
       var rScale = d3.scale.pow()
                     .domain([0,1050])
@@ -16,7 +31,7 @@ var ticker_input = 'ABBV';
   			          .attr("width", w)
   			          .attr("height", h);
       		
-      var circle = svg.selectAll("circle")
+      circle = svg.selectAll("circle")
       						    .data([0])
       						    .enter()
       						    .append("circle");
@@ -28,7 +43,7 @@ var ticker_input = 'ABBV';
       	.attr("fill", "#2980b9")
       	.attr("fill-opacity", .7);
 
-      var ellipse = svg.selectAll("ellipse")
+      ellipse = svg.selectAll("ellipse")
                       .data([0])
                       .enter()
                       .append("ellipse");
@@ -40,7 +55,7 @@ var ticker_input = 'ABBV';
         .attr("ry", 15)
         .attr("fill-opacity", .1);
 
-      var date = svg.selectAll("text.date")
+      date = svg.selectAll("text.date")
         .data([0])
         .enter()
         .append("text");
@@ -54,7 +69,7 @@ var ticker_input = 'ABBV';
         .attr("font-size", "20px")
         .attr("fill", "white" );
 
-      var price = svg.selectAll("text.price")
+      price = svg.selectAll("text.price")
         .data([0])
         .enter()
         .append("text");
@@ -175,4 +190,5 @@ var ticker_input = 'ABBV';
         }
       }
     }
+
 

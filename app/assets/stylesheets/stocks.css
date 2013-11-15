@@ -5,47 +5,81 @@
 
 body {
 	background: url('/images/nyc.jpg');
-	z-index: -9999;
 	margin: 0px;
+	width: 1200px;
+	z-index: -9999;
 }
 
 svg {
+	clear: both;
 	float: left;
 	position: absolute;
-	/*display: inline-block;*/
-	clear: both;
 	width: 100%;
-	z-index: -99999;
+	z-index: -999;
 }
 
 img {
 	width: 90px;
 }
 
-span {
-	font-weight: bold;
+.nav {
+	margin-left: 8px;
 }
 
-#home {
-	width: 400px;
-	height: 200px;
+.nav a{
+	font-family: 'Open Sans Condensed', sans-serif;
+	padding: 10px;
+	text-decoration: none;
+}
+
+a:link {color:#FFF;}      /* unvisited link */
+a:visited {color:#FFF;}  /* visited link */
+a:hover {color:#484848 }  /* mouse over link */
+a:active {color:#FFF;}  /* selected link */
+
+.company_info {
 	background-color: #383838;
 	background: rgb(0, 0, 0);
 	background: rgba(0, 0, 0, 0.2);
 	border-radius: 5px;
+	clear: both;
+	color: white;
+	float: right;
+	font-family: 'Open Sans Condensed', sans-serif;
+	margin: 140px 0px 0px 550px;
+	padding-right: 10px;
+	position: absolute;
+	width: 520px;
+}
+
+.company_info ul li {
+	list-style-type: none;
+	margin-top: 13px;
+}
+
+#main {
+	width: 100%;
+}
+
+#home {
+	background-color: #383838;
+	background: rgb(0, 0, 0);
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	height: 200px;
 	position: absolute;
     top:0;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
     margin: auto;
+  width: 400px;
 }
 
 #logo-box {
-	width: 200px;
-	/*border: 1px dashed;*/
-	padding: 1px;
 	margin: auto;
+	padding: 1px;
+	width: 200px;
 }
 
 #rhino {
@@ -54,87 +88,82 @@ span {
 }
 
 #logo {
+	color: #fff;
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 20px;
-	color: #fff;
-	text-align: center;
 	margin: -12px auto;
+	text-align: center;
 }
 
 #home-selectbox {
-	width: 202px;
+	border-radius: 5px;
 	height: 50px;
-	border-radius: 5px;
-	/*border: 1px solid;*/
 	margin: 0px auto;
-}
-
-.company_info {
-	color: white;
-	width: 520px;
-	margin: 140px 0px 0px 550px;
-	padding-right: 10px;
-	position: absolute;
-	float: right;
-	/*border-left: 1px solid;*/
-	font-family: 'Open Sans Condensed', sans-serif;
-	clear: both;
-	background-color: #383838;
-	background: rgb(0, 0, 0);
-	background: rgba(0, 0, 0, 0.2);
-	border-radius: 5px;
-}
-
-.company_info ul li {
-	list-style-type: none;
-	margin-top: 13px;
+	width: 202px;
 }
 
 #start_animation {
- 		width: 80px;
     background: none;
+    border: 1px solid gray;
+    color: #fff;
     cursor: pointer;
     font-family: 'voltaeftu-regular',Times New Roman;
     font-size: 16px;
-    border: 1px solid gray;
-    color: #fff;
     margin-left: 0px;
     padding: 0px;
+    width: 80px;
 }
 
-
-/*select box*/
+/*select boxes*/
 	#selectbox {
+		display: inline-block;
 	  padding: 10px;
-	  display: inline-block;
-	  /*background-color:#003540;*/
-	  width: 200px;
 	  position: absolute;
-	  top: 0;
 	  right: 0;
+	  top: 0;
+	  width: 200px;
 	}
 
 	#selectbox-one {
-	  padding: 10px;
-	  display: inline-block;
-	  /*background-color:#003540;*/
-	  width: 200px;
-	  position: absolute;
+		display: inline-block;
 	  float: left;
-	  top: 0;
+	  padding: 10px;
+	  position: absolute;
 	  right: 0;
+	  top: 0;
+	  width: 200px;
 	}
 
 	#selectbox-two {
-	  padding: 10px;
-	  display: inline-block;
-	  /*background-color:#003540;*/
-	  width: 200px;
-	  position: absolute;
-	  float: left;
-	  top: 0;
+		display: inline-block;
+		float: left;
 	  left: 0;
+	  padding: 10px;
+	  position: absolute;
+	  top: 0;
+	  width: 200px;
 	}
+
+	#stock_one_ticker {
+		background-color:#003540;
+		display: inline-block;
+		left: 0;
+	  padding: 10px;
+	  position: absolute;
+	  top: 0;
+	  width: 200px;
+	}
+
+	#stock_two_ticker {
+		background-color:#003540;
+		display: inline-block;
+	  padding: 10px;
+	  position: absolute;
+	  right: 0;
+	  top: 0;
+	  width: 200px;
+	}
+
 
 	.ui-autocomplete {
 	  font-size: 14px;
@@ -184,6 +213,6 @@ span {
       background-color: #D5E5F4;
       color: #161A1C;
 	}
-	/*select box end*/
+	/*select boxes end*/
 
 

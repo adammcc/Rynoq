@@ -25,6 +25,7 @@
 			<div id="home-selectbox">
 				<%= select(:stock, :ticker, @select_options_list, prompt: 'Enter company/ticker')%>
 			</div>
+			<div>Bringing stocks to life</div>
 		</div>
 	
 </script>
@@ -32,22 +33,23 @@
 <!-- show template -->
 <script id="stock-view-template" type="text/x-handlebars-template">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-	<div>
-		<a href="/" id="home_link">Home</a>
-		<a href='stock/battle' id="battle_link">Battle</a>
-	</div>
-
+	
 	<div id="selectbox">
 		<%= select(:stock, :ticker, @select_options_list, prompt: 'Enter company/ticker')%>
+		<div = class="nav">
+			<a href="/" id="home_link">Home</a>
+			<span>|</span>
+			<a href='/battle' id="battle_link">Battle</a>
+		</div>
 	</div>
 
 
 	<div class="company_info">
 		<ul>
-			<li><span>Company Name:</span> {{company_name}}</li>
+			<li><strong>Company Name:</strong> {{company_name}}</li>
 
-			<li><span>Ticker:</span> {{ticker}}</li>
-			<li><span>Description:</span> {{description}}</li>
+			<li><strong>Ticker:</strong> {{ticker}}</li>
+			<li><strong>Description:</strong> {{description}}</li>
 			<li><button id="start_animation" name="button" type="submit">Start</button></li>
 		</ul>
 	</div>
@@ -57,6 +59,11 @@
 <script id="battle-view-template" type="text/x-handlebars-template">
 <div id="selectbox-one">
 	<%= select(:stock_one, :ticker, @select_options_list, prompt: 'Enter company/ticker')%>
+		<div = class="nav">
+			<a href="/" id="home_link">Home</a>
+			<span>|</span>
+			<a href='/battle' id="battle_link">Battle</a>
+		</div>
 </div>
 
 <div id="selectbox-two">
