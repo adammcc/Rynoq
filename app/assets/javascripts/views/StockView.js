@@ -19,7 +19,7 @@ app.StockView = Backbone.View.extend({
 		this.$el.html(template(this.model.toJSON()));
 		// convert form to an auto complete form
 		console.log(document.URL);
-		// $('select').selectToAutocomplete();
+		$('select').selectToAutocomplete();
 		console.log(document.URL);
 		makeCircle(this.model.attributes.quotes);
 		return this;
