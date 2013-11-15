@@ -1,8 +1,8 @@
-=Rynoq
+#Rynoq
 
 Rynoq let's you visualize and animate historical stock volatility.
 
-==Technology
+##Technology
 
 * Rails 4
 
@@ -14,6 +14,6 @@ Rynoq let's you visualize and animate historical stock volatility.
 
 * Rspec, Cucumber, Factory Girl
 
-==Demo
+##Demo
 _To checkout the rynoq app click_
 [HERE:](http://rynoq.com/)
