@@ -42,7 +42,7 @@ var price;
       	.attr("cy", h/2 - 165)
       	.attr("r", rScale(dataset[0][6]))
       	.attr("fill", "#2980b9")
-      	.attr("fill-opacity", .7);
+      	.attr("fill-opacity", .6);
 
       ellipse = svg.selectAll("ellipse")
                       .data([0])
@@ -54,7 +54,7 @@ var price;
         .attr("cy", h/2 + 128)
         .attr("rx", rScale(dataset[0][6]))
         .attr("ry", 15)
-        .attr("fill-opacity", .1);
+        .attr("fill-opacity", .2);
 
       date = svg.selectAll("text.date")
         .data([0])
