@@ -22,7 +22,7 @@ app.HomeView = Backbone.View.extend({
 		e.preventDefault();
 		if ($('#stock_ticker') != ''){
 			ticker_input = $('#stock_ticker option:selected').val();
-	    app.router.navigate('stocks/' + ticker_input, {trigger: true });
+	    app.router.navigate('stocks/' + ticker_input, {trigger: true })
     }
 	}
 	
