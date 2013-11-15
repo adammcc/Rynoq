@@ -7,7 +7,7 @@ Rynoq::Application.routes.draw do
 
   get '/stocks/:id' => 'stocks#show'
 
-  get '/stock/battle' => 'stock#battle'
+  get '/battle' => 'stocks#battle'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

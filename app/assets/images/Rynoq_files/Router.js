@@ -12,15 +12,12 @@ app.Router = Backbone.Router.extend({
 	},
 
 	index: function(){
-		console.log("Home View routing")
-		d3.selectAll('svg').remove();
 		var home_view = new app.HomeView();
 		home_view.render();	
 	},
 
 	show: function(id){
 		console.log("Stock View routing")
-		d3.selectAll('svg').remove();
 		var stock = new app.Stock({id:id});
 		stock.fetch({
 			error: function(model, response) {

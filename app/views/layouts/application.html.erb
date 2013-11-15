@@ -33,13 +33,14 @@
 <script id="stock-view-template" type="text/x-handlebars-template">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 	<div>
-		<a href="/" id="home_link">Home</a>
-		<a href='stock/battle' id="battle_link">Battle</a>
+		<a href='/stocks' id="home_link">Home</a>
+		<a href='battle' id="battle_link">Battle</a>
 	</div>
 
 	<div id="selectbox">
 		<%= select(:stock, :ticker, @select_options_list, prompt: 'Enter company/ticker')%>
 	</div>
+
 
 	<div class="company_info">
 		<ul>
@@ -74,7 +75,7 @@
 </div>
 
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+<!-- <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script> -->
 </body>
 
 

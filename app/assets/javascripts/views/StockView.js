@@ -11,24 +11,39 @@ app.StockView = Backbone.View.extend({
 	},
 
 	initialize: function(){
-		console.log("StockView initialized!")
+		console.log("StockView initialized!");
 	},
 
 	render: function(){
 		var template = Handlebars.compile($('#stock-view-template').html());
 		this.$el.html(template(this.model.toJSON()));
 		// convert form to an auto complete form
-		$('select').selectToAutocomplete();
+		console.log(document.URL);
+		// $('select').selectToAutocomplete();
+		console.log(document.URL);
+		makeCircle(this.model.attributes.quotes);
 		return this;
 	},
 
-	show: function(){
-		ticker_input = $('#stock_ticker option:selected').val();
-    app.router.navigate('stocks/' + ticker_input, {trigger: true })
-    makeCircle(this.model.attributes.quotes)
+	show: function(e){
+		e.preventDefault();
+		if ($('#stock_ticker') != ''){
+			ticker_input = $('#stock_ticker option:selected').val();
+	    app.router.navigate('stocks/' + ticker_input, {trigger: true });
+	  }
 	},
 
 	start: function(){
-		makeCircle(this.model.attributes.quotes)
+		makeCircle(this.model.attributes.quotes);
+	},
+
+	home: function(e){
+		e.preventDefault();
+		app.router.navigate('', {trigger: true});
+	},
+
+	battle: function(e){
+		e.preventDefault();
+		app.router.navigate('battle', {trigger:true})
 	}
 })
