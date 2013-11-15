@@ -2,8 +2,6 @@
 
 Rynoq let's you visualize and animate historical stock volatility.
 
-Demo:[http://rynoq.com/]
-
 ==Technology
 
 * Rails 4
@@ -15,3 +13,7 @@ Demo:[http://rynoq.com/]
 * Yahoo Fianance API
 
 * Rspec, Cucumber, Factory Girl
+
+==Demo
+_To checkout the rynoq app click
+HERE:[http://rynoq.com/]
