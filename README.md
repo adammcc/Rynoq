@@ -1,4 +1,4 @@
-= Rynoq
+=Rynoq
 
 Rynoq let's you visualize and animate historical stock volatility.
 
