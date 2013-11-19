@@ -1,9 +1,7 @@
 class StocksController < ApplicationController
-	def index
-		@select_options_list = Stock.pluck(:company_name, :ticker).collect do |stock| 
-			["#{stock[0]} (#{stock[1]})", stock[1]]
-		end
+	before_filter :build_select_options
 
+	def index
 		respond_to do |format|
 			format.html
 			format.json {render :json => @select_options_list}
@@ -11,12 +9,7 @@ class StocksController < ApplicationController
 	end
 
 	def show
-		@select_options_list = Stock.pluck(:company_name, :ticker).collect do |stock| 
-			["#{stock[0]} (#{stock[1]})", stock[1]]
-		end
-
 		@stock = Stock.find(params[:id])
-
 		respond_to do |format|
       format.html
       format.json {render :json => @stock}
@@ -24,10 +17,16 @@ class StocksController < ApplicationController
 	end
 
 	def battle
+	end
+
+	private
+
+	def build_select_options
 		@select_options_list = Stock.pluck(:company_name, :ticker).collect do |stock| 
 			["#{stock[0]} (#{stock[1]})", stock[1]]
 		end
 	end
+
 
 end
 
