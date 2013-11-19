@@ -1,0 +1,250 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
+/*// Place all the styles related to the stocks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/*/
+
+
+
+body {
+	background: url('/images/nyc.jpg');
+	margin: 0px;
+	width: 1200px;
+	z-index: -9999;
+}
+
+#main {
+	z-index: -99999;
+	height: 0px;
+}
+
+svg {
+	clear: both;
+	float: left;
+	position: absolute;
+	width: 100%;
+	z-index: -999;
+}
+
+img {
+	width: 90px;
+}
+
+.nav {
+	margin-left: 8px;
+}
+
+.nav a{
+	font-family: 'Open Sans Condensed', sans-serif;
+	padding: 10px;
+	text-decoration: none;
+}
+
+a:link {color:#FFF;}      /* unvisited link */
+a:visited {color:#FFF;}  /* visited link */
+a:hover {color:#484848 }  /* mouse over link */
+a:active {color:#FFF;}  /* selected link */
+
+.company_info {
+	background-color: #383838;
+	background: rgb(0, 0, 0);
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	clear: both;
+	color: white;
+	float: right;
+	font-family: 'Open Sans Condensed', sans-serif;
+	margin: 140px 0px 0px 550px;
+	padding-right: 10px;
+	position: absolute;
+	width: 520px;
+}
+
+.company_info ul li {
+	list-style-type: none;
+	margin-top: 13px;
+}
+
+#main {
+	width: 100%;
+}
+
+#home {
+	background-color: #383838;
+	background: rgb(0, 0, 0);
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	height: 200px;
+	position: absolute;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  width: 400px;
+}
+
+#logo-box {
+	margin: auto;
+	padding: 1px;
+	width: 200px;
+}
+
+#rhino {
+	float: left;
+	margin: 10px 0px 0px 0px;
+}
+
+#logo {
+	color: #fff;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 20px;
+	margin: -12px auto;
+	text-align: center;
+}
+
+#home-selectbox {
+	border-radius: 5px;
+	height: 50px;
+	margin: 0px auto;
+	width: 202px;
+}
+
+#start_animation, #start_battle {
+    background: none;
+    border: 1px solid gray;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'voltaeftu-regular',Times New Roman;
+    font-size: 16px;
+    margin: 40px auto;
+    padding: 0px;
+    width: 120px;
+}
+
+#start_battle {
+	height: 30px;
+}
+
+.start_battle {
+	width: 40px;
+	height: 25;
+	margin: 0px auto;
+}
+
+
+
+/*select boxes*/
+	#selectbox {
+		display: inline-block;
+	  padding: 10px;
+	  position: absolute;
+	  right: 0;
+	  top: 0;
+	  width: 200px;
+	}
+
+	#selectbox-one {
+		display: inline-block;
+	  float: left;
+	  padding: 10px;
+	  position: absolute;
+	  right: 0;
+	  top: 0;
+	  width: 200px;
+	}
+
+	#selectbox-two {
+		display: inline-block;
+		float: left;
+	  left: 0;
+	  padding: 10px;
+	  position: absolute;
+	  top: 0;
+	  width: 200px;
+	}
+
+	#stock_one_ticker {
+		background-color:#003540;
+		display: inline-block;
+		left: 0;
+	  padding: 10px;
+	  position: absolute;
+	  top: 0;
+	  width: 200px;
+	}
+
+	#stock_two_ticker {
+		background-color:#003540;
+		display: inline-block;
+	  padding: 10px;
+	  position: absolute;
+	  right: 0;
+	  top: 0;
+	  width: 200px;
+	}
+
+
+	.ui-autocomplete {
+	  font-size: 14px;
+	  padding: 0;
+	  list-style: none;
+	  background-color: #fff;
+	  width: 200px;
+	  border: 1px solid #B0BECA;
+	  max-height: 350px;
+	  overflow-y: scroll;
+	  position: absolute;
+	}
+
+	.ui-autocomplete-input {
+	   /*background: url(magnifying_glass.png) no-repeat 6px 4px #fcfcfc;*/
+	   border: none;
+	   border-radius: 5px;
+	   color: #aaa;
+	   font-family: 'Lato', sans-serif;
+	   font-size: 13px;
+	   font-weight: bold;
+	   margin-bottom: 3px;
+	   width: 152px;
+	   height: 30px;
+	   padding: 6px 15px 6px 35px;
+	   text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+	   -webkit-transition: all 0.7s ease 0s;
+	   -moz-transition: all 0.7s ease 0s;
+	   -o-transition: all 0.7s ease 0s;
+	   transition: all 0.7s ease 0s;
+	}
+
+    .ui-autocomplete .ui-menu-item a {
+	  border-top: 1px solid #B0BECA;
+	  display: block;
+	  padding: 4px 6px;
+	  color: #353D44;
+	  cursor: pointer;
+	  background-color: #fff;
+	}
+    
+	.ui-autocomplete .ui-menu-item:first-child a {
+ 	  border-top: none;
+	}
+
+	.ui-autocomplete .ui-menu-item a.ui-state-hover {
+      background-color: #D5E5F4;
+      color: #161A1C;
+	}
+	/*select boxes end*/
+
+
