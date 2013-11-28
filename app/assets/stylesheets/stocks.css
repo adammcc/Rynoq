@@ -4,8 +4,7 @@
 
 
 body {
-	background: url('/images/nyc.jpg');
-	background-size: cover;
+	background: url('/images/nyc.jpg') no-repeat;
 	margin: 0px;
 	width: 1200px;
 	z-index: -9999;
